@@ -18,21 +18,6 @@ class AutomodelsController extends \yii\console\Controller{
             $tableName = $oneTable['table_name'];
             $tableComment = $oneTable['table_comment'];
 
-            if(
-                StringHelper::startsWith(strtolower($tableName),'admin_')
-            ||
-                StringHelper::startsWith(strtolower($tableName),'zb_')
-                ||
-                in_array(strtolower($tableName),[
-                    'base_user',
-                    'user_order',
-                ])
-            ){
-                //echo $tableName . '   ' . PHP_EOL;
-            }else{
-                    continue;
-            }
-
             /*if(  strtolower($tableName) == 'user'){
             	echo 'skip user table................' . PHP_EOL;
             	continue;

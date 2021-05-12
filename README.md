@@ -15,3 +15,5 @@
 * 自动模型生产
 * service层
 
+### init 
+* 导入doc/db.sql 到数据库

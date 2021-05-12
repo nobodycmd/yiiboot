@@ -17,3 +17,7 @@
 
 ### init 
 * 导入doc/db.sql 到数据库
+* composer install
+* ./yii automodels/go
+* ./yii migrate
+* php composer.phar dump-autoload -o

@@ -1,4 +1,8 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
+    //放行路由
+    'allowUrl' =>
+        [
+//            'index/main'
+        ],
 ];

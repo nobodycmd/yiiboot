@@ -1,103 +1,92 @@
 <?php
-use yii\bootstrap\ActiveForm;
+// +----------------------------------------------------------------------
+// | When work is a pleasure, life is a joy!
+// +----------------------------------------------------------------------
+// | User: ShouKun Liu  |  Email:24147287@qq.com  | Time:2016/12/10 16:50
+// +----------------------------------------------------------------------
+// | TITLE: this to do?
+// +----------------------------------------------------------------------
 use yii\helpers\Url;
-use yii\captcha\Captcha;
+use yii\bootstrap\ActiveForm;
+
 ?>
+<div class="main-content" style="margin-top: 10%">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="login-container">
+                <div class="center">
+                    <h1>
+                        <i class="ace-icon fa fa-leaf green"></i>
+                        <span class="red">YII</span>
+                        <span class="white" id="id-text2">ADMIN</span>
+                    </h1>
+                </div>
 
-<div class="login-box">
-  <div class="login-logo">
-    <a href="<?=Url::toRoute('site/login')?>"><?=Yii::$app->params['appName'];?></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-	<?php $form = ActiveForm::begin(['id' => 'login-form', 'action'=>Url::toRoute('site/login')]); ?>
-    <!-- <form action="../../index2.html" method="post">   -->
-      <div class="form-group has-feedback">
-        <input name="username" id="username" type="text" class="form-control" placeholder="用户名" />
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input name="password" id="password" type="password" class="form-control" placeholder="密码">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback captcha_div hide">
-        <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback captcha_div hide">
-        <?php echo Captcha::widget(['name'=>'captchaimg','captchaAction'=>'site/captcha','imageOptions'=>['id'=>'captchaimg', 'title'=>'换一个', 'alt'=>'换一个', 'style'=>''],'template'=>'{image}']); ?>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input name="remember" id="remember" value="y" type="checkbox" /> &nbsp;记住我的登录
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button id="login_btn" type="button" class="btn btn-primary btn-block btn-flat">登录</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    <!-- </form>  -->
-    <?php ActiveForm::end(); ?>
+                <div class="space-6"></div>
 
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+                <div class="position-relative">
+                    <div id="login-box" class="login-box visible widget-box no-border">
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <div class="space-6"></div>
 
-<script>
-$('#login_btn').click(function (e) {
-    e.preventDefault();
-	$('#login-form').submit();
-});
-$('#captchaimg').click(function (e) {
-	$.ajax({
-		   type: "get",
-	        url: "<?=Url::toRoute(['site/captcha', 'refresh'=>1])?>",
-	        dataType: 'json',
-	        cache: false,
-	        success: function (data) {
-	            $("#captchaimg").attr('src', data.url);
-	        }
-	    });
-});
-$("#username").blur(function(e){
-    var username = this.value;
-    $.get("<?=Url::toRoute(['site/checkinfo'])?>", {username:username}, function(data){
-        // console.log("=====", data);
-        if(!!data.try){
-            console.log("=====", data);
-            $(".captcha_div").removeClass('hide');
-        }
-    });
+                                <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => Url::toRoute('site/login')]); ?>
+                                <fieldset>
+                                    <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+                                                            <?= $form->field($model, 'username')
+                                                                ->textInput([
+                                                                    'autofocus' => true,
+                                                                    'class' => 'form-control',
+                                                                    'placeholder' => '用户名'
+                                                                ])
+                                                                ->label(false) ?>
 
-});
-$('#login-form').bind('submit', function(e) {
-	e.preventDefault();
-    $(this).ajaxSubmit({
-    	type: "post",
-    	dataType:"json",
-    	url: "<?=Url::toRoute('site/login')?>",
-    	success: function(value) 
-    	{
-        	if(value.errno == 0){
-        		window.location.reload();
-        	}
-        	else if(value.errno == 1){
-        		$('#captcha').attr({'data-placement':'top', 'data-content':'<span class="text-danger">' + value.msg + '</span>', 'data-toggle':'popover'}).addClass('popover-show').popover({html : true }).popover('show');
-                $(".captcha_div").removeClass('hide');
-        	}
-        	else{
-            	$('#username').attr({'data-placement':'top', 'data-content':'<span class="text-danger">' + value.msg + '</span>', 'data-toggle':'popover'}).addClass('popover-show').popover({html : true }).popover('show');
-                $(".captcha_div").removeClass('hide');
-        	}
+                                                            <i class="ace-icon fa fa-user"></i>
+														</span>
+                                    </label>
 
-    	}
-    });
-});
-</script>
+                                    <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+                                                            <?= $form->field($model, 'password')
+                                                                ->textInput([
+                                                                    'class' => 'form-control',
+                                                                    'placeholder' => '密码'
+                                                                ])
+                                                                ->label(false) ?>
+                                                            <i class="ace-icon fa fa-lock"></i>
+														</span>
+                                    </label>
+
+                                    <div class="space"></div>
+
+
+                                    <div class="clearfix">
+                                        <label class="inline">
+                                            <input type="checkbox" name='loginForm[rememberMe]' value="1" class="ace">
+
+                                            <span class="lbl">记住我</span>
+
+                                        </label>
+
+                                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                                            <i class="ace-icon fa fa-key"></i>
+                                            <span class="bigger-110">登入</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="space-4"></div>
+                                </fieldset>
+                                <?php ActiveForm::end(); ?>
+
+                            </div><!-- /.widget-main -->
+
+                        </div><!-- /.widget-body -->
+                    </div><!-- /.login-box -->
+
+                </div><!-- /.position-relative -->
+
+            </div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.main-content -->

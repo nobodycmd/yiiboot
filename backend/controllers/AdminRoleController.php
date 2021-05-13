@@ -1,244 +1,131 @@
 <?php
+// +----------------------------------------------------------------------
+// | When work is a pleasure, life is a joy!
+// +----------------------------------------------------------------------
+// | User: ShouKun Liu  |  Email:24147287@qq.com  | Time:2016/12/13 22:10
+// +----------------------------------------------------------------------
+// | TITLE: 角色
+// +----------------------------------------------------------------------
 
 namespace backend\controllers;
 
+use backend\helps\Tree;
+use backend\models\AdminRule;
 use Yii;
-use yii\data\Pagination;
 use backend\models\AdminRole;
-use yii\web\NotFoundHttpException;
-use backend\services\AdminRoleRightService;
-use backend\services\AdminRightService;
-/**
- * AdminRoleController implements the CRUD actions for AdminRole model.
- */
+use yii\web\Response;
+
 class AdminRoleController extends BaseController
 {
-	public $layout = "lte_main";
+
 
     /**
-     * Lists all AdminRole models.
-     * @return mixed
+     * 角色列表
+     * @return string
      */
     public function actionIndex()
     {
-        $query = AdminRole::find();
-         $querys = Yii::$app->request->get('query');
-         if(empty($querys)== false && count($querys) > 0){
-            $condition = "";
-            $parame = array();
-            foreach($querys as $key=>$value){
-                $value = trim($value);
-                if(empty($value) == false){
-                    $parame[":{$key}"]=$value;
-                    if(empty($condition) == true){
-                        $condition = " {$key}=:{$key} ";
-                    }
-                    else{
-                        $condition = $condition . " AND {$key}=:{$key} ";
-                    }
-                }
-            }
-            if(count($parame) > 0){
-                $query = $query->where($condition, $parame);
-            }
-        }
-        //$models = $query->orderBy('display_order')
-        $pagination = new Pagination([
-            'totalCount' =>$query->count(), 
-            'pageSize' => '10', 
-            'pageParam'=>'page', 
-            'pageSizeParam'=>'per-page']
-        );
-        $models = $query
-        ->offset($pagination->offset)
-        ->limit($pagination->limit)
-        ->all();
-        return $this->render('index', [
-            'models'=>$models,
-            'pages'=>$pagination,
-            'query'=>$querys,
-        ]);
+        $AdminRole = AdminRole::find();
+        $models = $AdminRole->all();
+        return $this->render('index', ['model' => $models]);
     }
 
     /**
-     * Displays a single AdminRole model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        //$id = Yii::$app->request->post('id');
-        $model = $this->findModel($id);
-        return $this->asJson($model->getAttributes());
-
-    }
-
-    /**
-     * Creates a new AdminRole model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * 创建角色
+     * @return array|string
      */
     public function actionCreate()
     {
-        $model = new AdminRole();
-        if ($model->load(Yii::$app->request->post())) {
-        
-              $model->create_user = Yii::$app->user->identity->uname;
-              $model->create_date = date('Y-m-d H:i:s');
-              $model->update_user = Yii::$app->user->identity->uname;
-              $model->update_date = date('Y-m-d H:i:s');        
-            if($model->validate() == true && $model->save()){
-                $msg = array('errno'=>0, 'msg'=>'保存成功');
-                return $this->asJson($msg);
+        $AdminRole = new AdminRole(['scenario' => 'create']);
+        if ($AdminRole->load(Yii::$app->request->post()) && $AdminRole->validate()) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($AdminRole->save()) {
+                return ['code' => 200, 'message' => '添加成功'];
+            } else {
+                return ['code' => 400, 'message' => '添加失败'];
             }
-            else{
-                $msg = array('errno'=>2, 'data'=>$model->getErrors());
-                return $this->asJson($msg);
-            }
+
         } else {
-            $msg = array('errno'=>2, 'msg'=>'数据出错');
-            return $this->asJson($msg);
+            return $this->render('create', ['model' => $AdminRole]);
         }
+
     }
 
     /**
-     * Updates an existing AdminRole model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
+     * 更新角色
+     * @return array|string
      */
     public function actionUpdate()
     {
-        $id = Yii::$app->request->post('id');
-        $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post())) {
-        
-              $model->update_user = Yii::$app->user->identity->uname;
-              $model->update_date = date('Y-m-d H:i:s');        
-        
-            if($model->validate() == true && $model->save()){
-                $msg = array('errno'=>0, 'msg'=>'保存成功');
-                return $this->asJson($msg);
-            }
-            else{
-                $msg = array('errno'=>2, 'data'=>$model->getErrors());
-                return $this->asJson($msg);
-            }
+        $id = Yii::$app->request->get('id');
+        $model = AdminRole::findOne($id);
+        $model->scenarios('update');
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['code' => 200, 'message' => '修改成功'];
         } else {
-            $msg = array('errno'=>2, 'msg'=>'数据出错');
-            return $this->asJson($msg);
+            return $this->render('update', ['model' => $model]);
         }
-    
+
+
     }
 
     /**
-     * Deletes an existing AdminRole model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
+     * 删除 角色
+     * @return array
      */
-    public function actionDelete(array $ids)
+    public function actionDelete()
     {
-        if(count($ids) > 0){
-            $c = AdminRole::deleteAll(['in', 'id', $ids]);
-            return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
+        $id = Yii::$app->request->get('id');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (AdminRole::deleteRole($id)) {
+            return ['code' => 200, 'message' => '成功'];
+        } else {
+            return ['code' => 400, 'message' => '错误'];
         }
-        else{
-            return $this->asJson(array('errno'=>2, 'msg'=>''));
-        }
-    
-  
     }
 
     /**
-     * Finds the AdminRole model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return AdminRole the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * 设置权限
+     * @return array|string
      */
-    protected function findModel($id)
+    public function actionSetRule()
     {
-        if (($model = AdminRole::findOne($id)) !== null) {
-            return $model;
+
+        $roleId = Yii::$app->request->get('id');
+        if (empty($roleId)) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['code' => 400, 'message' => '参数错误'];
+        }
+        $model = AdminRole::findOne($roleId);
+        $model->rule = explode(',', $model->rule);
+        if (Yii::$app->request->post()) {
+            $rule = Yii::$app->request->post('rule');
+            $rule = array_filter($rule);
+            krsort($rule);
+            $rule = implode(',', $rule);
+            $model->scenario = 'update';
+            $model->rule = $rule;
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if (!$model->save()) {
+                return ['code' => 400, 'message' => '修改失败'];
+            } else {
+                return ['code' => 200, 'message' => '修改成功'];
+            }
+
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            $ruleAll = AdminRule::find()->where(['status' => 1])->asArray()->all();
+            $ruleAll = array_map(function ($item) use ($model) {
+                (in_array($item['id'], $model->rule)) ?
+                    $item['state'] = ['checked' => true] : '';
+                $item['text'] = $item['title'];
+                return $item;
+            }, $ruleAll);
+            $ruleAll = Tree::makeTree($ruleAll, ['children_key' => 'nodes']);
+            return $this->render('setRule', ['ruleAll' => $ruleAll, 'model' => $model]);
         }
+
     }
-    
-    public function actionGetAllRights($roleId){
-    
-        $roleRights = AdminRoleRightService::findAll(['role_id'=>$roleId]);
-        $roleRightsData = [];
-        foreach($roleRights as $r){
-            $roleRightsData[$r->right_id] = $r->right_id;
-        }
-        $adminRightService = new AdminRightService();
-        $rights = $adminRightService->getAllRight();
-        $datas = array();
-        foreach($rights as $r){
-            $mid = $r['mid'];
-            $m_name = $r['m_name'];
-            $fid = $r['fid'];
-            $f_name = $r['f_name'];
-            $rid = $r['rid'];
-            $r_name = $r['r_name'];
-    
-            $rightData = ['rid'=>$rid, 'text'=>$r_name, 'type'=>'r', 'selectable'=>false, 'state'=>['checked'=>false]];
-            if(isset($roleRightsData[$rid]) == true){
-                $rightData['state']['checked'] = true;
-            }
-            if(isset($datas[$mid]) == false){
-                $moduleData = ['mid'=>$mid, 'text'=>$m_name, 'type'=>'m', 'selectable'=>false, 'state'=>['checked'=>true]];
-                $datas[$mid] = $moduleData;
-            }
-    
-            if(isset($datas[$mid]['funs'][$fid]) == false){
-                $funData = ['fid'=>$fid, 'text'=>$f_name, 'type'=>'f', 'selectable'=>false, 'state'=>['checked'=>true]];
-                $datas[$mid]['funs'][$fid] = $funData;
-            }
-            $datas[$mid]['funs'][$fid]['rights'][$rid] = $rightData;
-        }
-        foreach($datas as $k=>$modules){
-            $funs = $modules['funs'];
-            foreach($funs as $f=>$fun){
-                $rights = $funs[$f]['rights'];
-                unset($funs[$f]['rights']);
-                $rights = array_values($rights);
-                $funs[$f]['nodes'] = $rights;
-                // 检查当前功能下所有权限是否选中,
-                foreach($rights as $r=>$right){
-                    if($right['state']['checked'] == false){
-                        $funs[$f]['state']['checked'] = false;
-                        break;
-                    }
-                }
-                // 判断当前模块下所有功能是否全选中
-                if($datas[$k]['state']['checked'] == true && $funs[$f]['state']['checked'] == false){
-                    $datas[$k]['state']['checked'] = false;
-                }
-            }
-            unset($datas[$k]['funs']);
-            $funs = array_values($funs);
-            $datas[$k]['nodes']=$funs;
-    
-        }
-        $datas = array_values($datas);
-    
-        return $this->asJson($datas);
-    
-    }
-    
-    public function actionSaveRights(array $rids, $roleId){
-         
-        if(count($rids) > 0){
-            $adminRoleRightService = new AdminRoleRightService();
-            $count = $adminRoleRightService->saveRights($rids, $roleId, Yii::$app->user->identity->uname);
-            if($count > 0){
-                return $this->asJson(array('errno'=>0, 'data'=>$count, 'msg'=>'保存成功'));
-                return;
-            }
-        }
-        return $this->asJson(array('errno'=>2, 'data'=>'', 'msg'=>'保存失败'));
-    }
+
+
 }

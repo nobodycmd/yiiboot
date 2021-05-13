@@ -1,181 +1,98 @@
 <?php
+// +----------------------------------------------------------------------
+// | When work is a pleasure, life is a joy!
+// +----------------------------------------------------------------------
+// | User: ShouKun Liu  |  Email:24147287@qq.com  | Time:2016/12/18 19:02
+// +----------------------------------------------------------------------
+// | TITLE: 用户管理
+// +----------------------------------------------------------------------
 
 namespace backend\controllers;
 
 use Yii;
-use yii\data\Pagination;
 use backend\models\AdminUser;
-use yii\web\NotFoundHttpException;
+use yii\data\Pagination;
+use yii\web\Response;
 
 /**
- * AdminUserController implements the CRUD actions for AdminUser model.
+ * Class AdminUserController
+ * @package backend\controllers
  */
 class AdminUserController extends BaseController
 {
-	public $layout = "lte_main";
 
-    /**
-     * Lists all AdminUser models.
-     * @return mixed
-     */
     public function actionIndex()
     {
-        $query = AdminUser::find();
-         $querys = Yii::$app->request->get('query');
-         if(empty($querys)== false && count($querys) > 0){
-            $condition = "";
-            $parame = array();
-            foreach($querys as $key=>$value){
-                $value = trim($value);
-                if(empty($value) == false){
-                    $parame[":{$key}"]=$value;
-                    if(empty($condition) == true){
-                        $condition = " {$key}=:{$key} ";
-                    }
-                    else{
-                        $condition = $condition . " AND {$key}=:{$key} ";
-                    }
-                }
-            }
-            if(count($parame) > 0){
-                $query = $query->where($condition, $parame);
-            }
-        }
-        //$models = $query->orderBy('display_order')
-        $pagination = new Pagination([
-            'totalCount' =>$query->count(), 
-            'pageSize' => '10', 
-            'pageParam'=>'page', 
-            'pageSizeParam'=>'per-page']
-        );
-        $models = $query
-        ->offset($pagination->offset)
-        ->limit($pagination->limit)
-        ->all();
-        return $this->render('index', [
-            'models'=>$models,
-            'pages'=>$pagination,
-            'query'=>$querys,
-        ]);
+        $AdminUser = AdminUser::find();
+        $pages = new Pagination(['totalCount'=>$AdminUser->count(),'pageSize'=>15]);
+        $models = $AdminUser
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('index',
+            [
+                'model' => $models,
+                'pages' => $pages
+            ]);
     }
 
     /**
-     * Displays a single AdminUser model.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        //$id = Yii::$app->request->post('id');
-        $model = $this->findModel($id);
-        $model->password = '';
-        return $this->asJson($model->getAttributes());
-
-    }
-
-    /**
-     * Creates a new AdminUser model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * 创建用户
+     * @return array|string
      */
     public function actionCreate()
     {
-        $model = new AdminUser();
-        if ($model->load(Yii::$app->request->post())) {
-            $model2 = AdminUser::findOne(array('uname'=>$model->uname));
-            if(empty($model2) == true){
-                $msg = array('errno'=>2, 'data'=>array('uname'=>'用户不存在'));
-                return $this->asJson($msg);
+        $AdminUser = new AdminUser(['scenario' => AdminUser::SCENARIO_CREATE]);
+        if ($AdminUser->load(Yii::$app->request->post()) && $AdminUser->validate()) {
+            $AdminUserData = Yii::$app->request->post('AdminUser');
+            $AdminUser->setPassword($AdminUserData['password']);
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if (  $AdminUser->save() ){
+                return ['code' => 200, 'message' => '添加成功'];
+            }else{
+                return ['code' => 200, 'message' => '添加失败'];
             }
-            if(empty($model->is_online) == true){
-                $model->is_online = 'n';
-            }
-            if(empty($model->status) == true){
-              $model->status = 10;
-            }
-            $model->password = Yii::$app->security->generatePasswordHash($model->password);
-            $model->create_user = Yii::$app->user->identity->uname;
-            $model->create_date = date('Y-m-d H:i:s');
-            $model->update_user = Yii::$app->user->identity->uname;
-            $model->update_date = date('Y-m-d H:i:s');            
-            if($model->validate() == true && $model->save()){
-                $msg = array('errno'=>0, 'msg'=>'保存成功');
-                return $this->asJson($msg);
-            }
-            else{
-                $msg = array('errno'=>2, 'data'=>$model->getErrors());
-                return $this->asJson($msg);
-            }
+
         } else {
-            $msg = array('errno'=>2, 'msg'=>'数据出错');
-            return $this->asJson($msg);
+            return $this->render('create', ['model' => $AdminUser]);
         }
     }
 
+
     /**
-     * Updates an existing AdminUser model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
-     * @return mixed
+     * 更新角色
+     * @return array|string
      */
     public function actionUpdate()
     {
-        $id = Yii::$app->request->post('id');
-        $model = $this->findModel($id);
-        $adminUser = Yii::$app->request->post('AdminUser');
-        if (empty($adminUser) == false) {
-            //$model->is_online = 'n';
-            $model->status = $adminUser['status'];
-            $model->update_user = Yii::$app->user->identity->uname;
-            $model->update_date = date('Y-m-d H:i:s');        
-        
-            if($model->validate() == true && $model->save()){
-                $msg = array('errno'=>0, 'msg'=>'保存成功');
-                return $this->asJson($msg);
-            }
-            else{
-                $msg = array('errno'=>2, 'data'=>$model->getErrors());
-                return $this->asJson($msg);
+        $id = Yii::$app->request->get('id');
+        $model = AdminUser::findOne($id);
+        $model->scenarios( AdminUser::SCENARIO_UPDATE);
+        $AdminUser= Yii::$app->request->post('AdminUser');
+        if (!empty($AdminUser['password'])) {
+            $model->setPassword($AdminUser['password']);
+        }
+        if ($model->load(Yii::$app->request->post())) {
+            $model->status = isset( $AdminUser['status']) ? $AdminUser['status'] : 0;
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if (  $model->save() ){
+                return ['code' => 200, 'message' => '修改成功'];
+            }else{
+                return ['code' => 400, 'message' => '修改失败'];
             }
         } else {
-            $msg = array('errno'=>2, 'msg'=>'数据出错');
-            return $this->asJson($msg);
+            return $this->render('update', ['model' => $model]);
         }
-    
     }
 
-    /**
-     * Deletes an existing AdminUser model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionDelete(array $ids)
+    public function actionDelete()
     {
-        if(count($ids) > 0){
-            $c = AdminUser::deleteAll(['in', 'id', $ids]);
-            return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
-        }
-        else{
-            return $this->asJson(array('errno'=>2, 'msg'=>''));
-        }
-    
-  
-    }
-
-    /**
-     * Finds the AdminUser model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return AdminUser the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = AdminUser::findOne($id)) !== null) {
-            return $model;
+        $id = Yii::$app->request->get('id');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (AdminUser::deleteUser($id)) {
+            return ['code' => 200, 'message' => '删除成功'];
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return ['code' => 400, 'message' => '删除错误'];
         }
     }
 }

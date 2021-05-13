@@ -5,27 +5,24 @@ $params = array_merge(
 );
 
 $config = [
-    'id' => 'pfast-backend',
-//     'homeUrl'=>'site/index',
+    'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'defaultRoute'=>'index',
     'components' => [
         'request' => [
-            'cookieValidationKey' => 'w3BnewAWmCrjijzkiLucYD5Ty1Ym_V9F',
+            'csrfParam' => '_csrf-backend',
         ],
-        
-//         'urlManager' => [
-//             'enablePrettyUrl' => true,
-//             'showScriptName' => false,
-//         ],
-        
-        'user'=>[
-            'class'=>'yii\web\User',
+        'user' => [
             'identityClass' => 'backend\models\AdminUser',
-            'enableAutoLogin' => true,
-            'enableSession'=>true,
+            'enableAutoLogin' => false,
+            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+        'session' => [
+            // this is the name of the session cookie used for login on the backend
+            'name' => 'advanced-backend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -33,40 +30,37 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
-                    'logVars' => [],
                 ],
             ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+            'maxSourceLines'=>'20'
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => false,
+            'showScriptName' => false,
+//            'enableStrictParsing' => false,
+        ],
+        'request' => [
+            //TODO !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => '',
+        ],
+
     ],
     'params' => $params,
-    'language'=>'zh-CN'
 ];
 
-if (YII_ENV_DEV) {
+if (!YII_ENV_TEST) {
+    // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
     ];
+
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'generators' => [
-            'model' => [
-                'class' => 'common\generators\model\Generator2',
-                'templates' => [
-                    'adminlte' => '../../common/generators/model/adminlte',
-                ]
-            ],
-            'crud' => [
-                'class' => 'common\generators\crud\Generator',
-                'templates' => [
-                    'adminlte' => '../../common/generators/crud/adminlte',
-                ]
-            ],
-        ]
     ];
 }
 

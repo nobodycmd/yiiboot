@@ -344,7 +344,7 @@ $randomUploadName = str_shuffle('abcdfdjkeruiqpodfakljxABCADAE');
 ?>
 <script>
     var <?= $randomUploadName ?>UploadedCount = 0;
-     function <?= $randomUploadName ?>Run() {
+    function <?= $randomUploadName ?>Run() {
         var fileCount = document.getElementById('<?= $randomUploadName ?>').files.length;
         uploadWithFileDom(document.getElementById('<?= $randomUploadName ?>'), function(fileIndex,  percent) {
             document.getElementById("<?= $randomUploadName?>info").innerHTML = '第'+fileIndex+'个文件正在上传，完成'+percent+'%';
@@ -393,8 +393,11 @@ $randomUploadName = str_shuffle('abcdfdjkeruiqpodfakljxABCADAE');
         })
     }
 </script>
-<div id="<?= $randomUploadName ?>wrap-for-upload">
-    <input type="file" <?= strpos($filedName,"[]") === false ? "" : "multiple"  ?> id="<?= $randomUploadName ?>" onchange="<?= $randomUploadName ?>Run()" />
+
+
+<div id="<?= $randomUploadName ?>wrap-for-upload" class="form-group field-zb_new_head_decoration_goods-online">
+    <label class="col-sm-3 control-label no-padding-right" for="zb_new_head_decoration_goods-online">云端文件：</label>
+    <input class="col-md-offset-1  col-sm-3" type="file" <?= strpos($filedName,"[]") === false ? "" : "multiple"  ?> id="<?= $randomUploadName ?>" onchange="<?= $randomUploadName ?>Run()" />
     <div id="<?= $randomUploadName ?>data">
         <?php
         if($value == false){
@@ -421,7 +424,7 @@ $randomUploadName = str_shuffle('abcdfdjkeruiqpodfakljxABCADAE');
             </div>
 
 
-        <?php
+            <?php
         }
         ?>
     </div>

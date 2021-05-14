@@ -22,13 +22,26 @@ class AutomodelsController extends \yii\console\Controller{
             	echo 'skip user table................' . PHP_EOL;
             	continue;
             }*/
-            
+
+
+            if(
+                StringHelper::startsWith(strtolower($tableName),'zb_')
+                ||
+                StringHelper::startsWith(strtolower($tableName),'base_user')
+                ||
+                StringHelper::startsWith(strtolower($tableName),'user_order')
+            ){
+
+            }else{
+                continue;
+            }
+
             $fileC = '<?php'.PHP_EOL;
             $fileC .= 'namespace common\models;'.PHP_EOL;
             $fileC .= 'use Yii;'.PHP_EOL;
             $fileC .= '/**'.PHP_EOL;
             $fileC .= '* 代码自动生成 '.$tableName.'-'.$tableComment.'表的模型 '.PHP_EOL;
-            $fileC .= '* 需要给模型新增方法就创建 '.ucfirst($tableName).'Trait'.' 后执行automodels会进行自动关联 '.PHP_EOL;
+            $fileC .= '* 需要给模型新增属性和方法就创建 '.ucfirst($tableName).'Trait'.' 后执行automodels会进行自动关联 '.PHP_EOL;
 
             $aryColoumns = \Yii::$app->db->createCommand("select COLUMN_NAME,DATA_TYPE,COLUMN_COMMENT,COLUMN_TYPE,CHARACTER_MAXIMUM_LENGTH,COLUMN_KEY from information_schema.`COLUMNS` where table_schema='$dbname' and TABLE_NAME='$tableName'")->queryAll();
             foreach($aryColoumns as $oneColumn){
@@ -62,6 +75,50 @@ class AutomodelsController extends \yii\console\Controller{
 
             file_put_contents(dirname(__DIR__).'/../common/models/'.ucfirst($tableName).'.php',$fileC);
 
+
+            //backend start
+            $fileBackend = '<?php'.PHP_EOL;
+            $fileBackend .= 'namespace backend\models;'.PHP_EOL;
+            $fileBackend .= 'use common\models;'.PHP_EOL;
+            $fileBackend .= 'use Yii;'.PHP_EOL;
+            $fileBackend .= '/**'.PHP_EOL;
+            $fileBackend .= '* 代码自动生成 '.$tableName.'-'.$tableComment.' 后台专用，用于表单验证显示使用，同时继承公用的模型 '.PHP_EOL;
+            $fileBackend .= '* 这里就不建议再进行trait了，直接只生成一次，后续变动就手动进行调整 '.PHP_EOL;
+
+            $fileBackend .= '*/'.PHP_EOL;
+            $fileBackend .= 'class '.ucfirst($tableName).' extends \common\models\\'.ucfirst($tableName).PHP_EOL;
+            $fileBackend .= '{'.PHP_EOL;
+
+            if(file_exists(dirname(__DIR__).'/../backend/models/'.ucfirst($tableName).'Trait.php')){
+                $fileBackend .='      use '.ucfirst($tableName).'Trait;' . PHP_EOL;
+            }
+
+            $fileBackend .= '     public function attributeLabels(){' . PHP_EOL;
+            $fileBackend .= "         return [" . PHP_EOL;
+            foreach($aryColoumns as $oneColumn){
+                $fileBackend .= "'".$oneColumn['COLUMN_NAME']. "' => '".$oneColumn['COLUMN_COMMENT'] . "',". PHP_EOL;
+            }
+            $fileBackend .= "         ];" . PHP_EOL;
+            $fileBackend .= '     }'. PHP_EOL;
+
+            //https://www.yiiframework.com/doc/guide/2.0/zh-cn/input-validation
+            $fileBackend .= '/* https://www.yiiframework.com/doc/guide/2.0/zh-cn/input-validation) */';
+            $fileBackend .= '     public function rules(){' . PHP_EOL;
+            $fileBackend .= "         return [];" . PHP_EOL;
+            $fileBackend .= '     }'. PHP_EOL;
+
+
+
+            $fileBackend .= '}'.PHP_EOL;
+
+            //不存在才创建
+            if(file_exists(dirname(__DIR__).'/../backend/models/'.ucfirst($tableName).'.php') === false)
+            {
+                file_put_contents(dirname(__DIR__).'/../backend/models/'.ucfirst($tableName).'.php',$fileBackend);
+            }
+            //backend end
+
+
             echo 'table '.$tableName.' was build'.PHP_EOL;
 
 
@@ -69,25 +126,25 @@ class AutomodelsController extends \yii\console\Controller{
 
         echo count($aryTables) .' tables were done!';
     }
-    
+
     private static function getImigrateType($tableName, $columnName , $type, $length=null){
-    	$type = strtolower($type);
-    	if($type=='varchar'){
-    		return "string($length)->defaultValue('')";
-    	}
-    	if($type=='char'){
-    		return "char($length)->defaultValue('')";
-    	}
-    	if($type=='int'||strpos($type,'int')){
-    		return 'integer()';
-    	}
-    	if($type=='decimal'||strpos($type,'decimal')||$type=='float'){
-    		return 'decimal(10,2)->defaultValue(0)';
-    	}
-    	if($type=='datetime'){
-    		return 'dateTime()';
-    	}
-    	//在有些版本里面text/blod类型不能有默认值
+        $type = strtolower($type);
+        if($type=='varchar'){
+            return "string($length)->defaultValue('')";
+        }
+        if($type=='char'){
+            return "char($length)->defaultValue('')";
+        }
+        if($type=='int'||strpos($type,'int')){
+            return 'integer()';
+        }
+        if($type=='decimal'||strpos($type,'decimal')||$type=='float'){
+            return 'decimal(10,2)->defaultValue(0)';
+        }
+        if($type=='datetime'){
+            return 'dateTime()';
+        }
+        //在有些版本里面text/blod类型不能有默认值
         if($type=='text'||strpos($type,'text')){
             return "text()";
         }
@@ -95,10 +152,10 @@ class AutomodelsController extends \yii\console\Controller{
             return "binary()";
         }
         if($type=='enum'){
-        	echo ' WARNING: ' . $tableName . ' . ' . $columnName . ' is ' . $type . PHP_EOL;
-        	exit;
+            echo ' WARNING: ' . $tableName . ' . ' . $columnName . ' is ' . $type . PHP_EOL;
+            exit;
         }
-    	return "$type()";
+        return "$type()";
     }
 
     private static function getType($type){

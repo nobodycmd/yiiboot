@@ -19,7 +19,9 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "symfony/var-dumper": "^2.8",
-        "qiniu/php-sdk": "^7.3"
+        "qiniu/php-sdk": "^7.3",
+        "yiisoft/yii2-queue": "^2.3",
+        "yiisoft/yii2-apidoc": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

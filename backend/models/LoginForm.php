@@ -2,12 +2,13 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 
 /**
  * Login form
  */
-class LoginForm extends BaseModel
+class LoginForm extends   ActiveRecord
 {
     public $username;
     public $password;
@@ -43,7 +44,7 @@ class LoginForm extends BaseModel
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, '账号或者密码错误');
             }
         }
     }

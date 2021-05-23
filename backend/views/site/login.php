@@ -1,92 +1,57 @@
 <?php
-// +----------------------------------------------------------------------
-// | When work is a pleasure, life is a joy!
-// +----------------------------------------------------------------------
-// | User: ShouKun Liu  |  Email:24147287@qq.com  | Time:2016/12/10 16:50
-// +----------------------------------------------------------------------
-// | TITLE: this to do?
-// +----------------------------------------------------------------------
-use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \common\models\LoginForm */
+
+$this->title = 'Sign In';
+
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
 ?>
-<div class="main-content" style="margin-top: 10%">
-    <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <div class="login-container">
-                <div class="center">
-                    <h1>
-                        <i class="ace-icon fa fa-leaf green"></i>
-                        <span class="red">YII</span>
-                        <span class="white" id="id-text2">ADMIN</span>
-                    </h1>
-                </div>
 
-                <div class="space-6"></div>
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>后台管理系统</b>登录</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">输入账号密码进行登录</p>
 
-                <div class="position-relative">
-                    <div id="login-box" class="login-box visible widget-box no-border">
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div class="space-6"></div>
+        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
-                                <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => Url::toRoute('site/login')]); ?>
-                                <fieldset>
-                                    <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-                                                            <?= $form->field($model, 'username')
-                                                                ->textInput([
-                                                                    'autofocus' => true,
-                                                                    'class' => 'form-control',
-                                                                    'placeholder' => '用户名'
-                                                                ])
-                                                                ->label(false) ?>
+        <?= $form
+            ->field($model, 'username', $fieldOptions1)
+            ->label(false)
+            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
 
-                                                            <i class="ace-icon fa fa-user"></i>
-														</span>
-                                    </label>
+        <?= $form
+            ->field($model, 'password', $fieldOptions2)
+            ->label(false)
+            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-                                    <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-                                                            <?= $form->field($model, 'password')
-                                                                ->textInput([
-                                                                    'class' => 'form-control',
-                                                                    'placeholder' => '密码'
-                                                                ])
-                                                                ->label(false) ?>
-                                                            <i class="ace-icon fa fa-lock"></i>
-														</span>
-                                    </label>
-
-                                    <div class="space"></div>
-
-
-                                    <div class="clearfix">
-                                        <label class="inline">
-                                            <input type="checkbox" name='loginForm[rememberMe]' value="1" class="ace">
-
-                                            <span class="lbl">记住我</span>
-
-                                        </label>
-
-                                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                                            <i class="ace-icon fa fa-key"></i>
-                                            <span class="bigger-110">登入</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="space-4"></div>
-                                </fieldset>
-                                <?php ActiveForm::end(); ?>
-
-                            </div><!-- /.widget-main -->
-
-                        </div><!-- /.widget-body -->
-                    </div><!-- /.login-box -->
-
-                </div><!-- /.position-relative -->
-
+        <div class="row">
+            <div class="col-xs-8">
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-</div><!-- /.main-content -->
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+        <?php ActiveForm::end(); ?>
+    </div>
+    <!-- /.login-box-body -->
+</div><!-- /.login-box -->

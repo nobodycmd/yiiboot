@@ -1,145 +1,165 @@
 <?php
-// +----------------------------------------------------------------------
-// | When work is a pleasure, life is a joy!
-// +----------------------------------------------------------------------
-// | User: ShouKun Liu  |  Email:24147287@qq.com  | Time:2016/12/10 15:36
-// +----------------------------------------------------------------------
-// | TITLE: 用户
-// +----------------------------------------------------------------------
-
 
 namespace backend\models;
 
+use Yii;
 
-class AdminUser extends BackendUser
-{
 
-    /**
-     * 用户修改
-     */
-    const SCENARIO_USER_UPDATE = 'user_update';
 
-    /**
-     * 用户状态
-     */
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 1;
-    /**
-     * @var 密码
-     */
-    public $password;
+/**
+* @PROPERTY_BEGIN
+* @property  int  id  
+* @property  varchar  username  
+* @property  varchar  auth_key  
+* @property  varchar  password_hash  
+* @property  varchar  password_reset_token  
+* @property  varchar  email  
+* @property  smallint  status  
+* @property  int  created_at  
+* @property  int  updated_at  
 
-    public function rules()
-    {
+auto replace propery at 2021-05-23 01:04:15
+* @PROPERTY_END
+*/
+class AdminUser  extends \common\models\AdminUser{
+
+
+
+    public function attributeLabels(){
         return [
-            ['username', 'required', 'message' => '名称必须'],
-            [['auth_key', 'password_hash', 'password_reset_token'], 'string', 'max' => 400],
-            [['created_at', 'updated_at', 'role_id'], 'safe'],
-            ['created_at', 'default', 'value' => self::getDate()],
-            ['updated_at', 'default', 'value' => self::getDate()],
-            ['email', 'email', 'message' => '请填写正确邮箱格式'],
-            ['mobile', 'string', 'max' => 15],
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-        ];
+        
+            'id' => '',
 
+            
+            'username' => '',
+
+            
+            'auth_key' => '',
+
+            
+            'password_hash' => '',
+
+            
+            'password_reset_token' => '',
+
+            
+            'email' => '',
+
+            
+            'status' => '',
+
+            
+            'created_at' => '',
+
+            
+            'updated_at' => '',
+
+                    ];
     }
 
 
-    public static function tableName()
-    {
-        return '{{%admin_user}}';
-    }
 
-    public function scenarios()
-    {
-        $scenarios = parent::scenarios();
-
-        $scenarios[self::SCENARIO_CREATE] =
-            [
-                'username',
-                'auth_key',
-                'password_hash',
-                'password_reset_token',
-                'email',
-                'created_at',
-                'status',
-                'role_id',
-                'mobile'
-            ];
-
-        $scenarios[self::SCENARIO_UPDATE] =
-            [
-                'username',
-                'auth_key',
-                'password_hash',
-                'password_reset_token',
-                'email',
-                'created_at',
-                'status',
-                'role_id',
-                'mobile'
-            ];
-        $scenarios[self::SCENARIO_USER_UPDATE] = [
-            'password_hash',
-            'email',
-            'mobile'
-        ];
-        return $scenarios;
-
-    }
-
-    public function attributeLabels()
-    {
-
+    public function rules(){
         return [
-            'id' => '主键',
-            'role_id' => '角色',
-            'username' => '用户名称',
-            'email' => '邮箱',
-            'mobile' => '手机号',
-            'status' => '状态',
+            
 
-        ];
+                                    [ ['id'] , 'required' ],
+                    
+
+                                    [ ['id'] , 'integer' ],
+                    
 
 
-    }
+                
 
-    public function attributeValues()
-    {
-        return [
-            'status' => [
-                '0' => '停用',
-                '1' => '正常',
-            ]
-        ];
 
-    }
+                
 
-    public static function getDate()
-    {
-        return date('Y-m-d H:i:s');
-    }
+                                    [ ['username'] , 'required' ],
+                    
 
-    public static function deleteUser($id)
-    {
-        $model = self::findOne($id);
-        if ($model) {
-            $model->scenarios(self::SCENARIO_UPDATE);
-            $model->status = self::STATUS_DELETED;
-            $model->save();
-            return ($model->save()) ? true : false;
-        } else {
-            return false;
-        }
-    }
+                
 
-    /**
-     * 获取用户角色
-     * @return array|null|\yii\db\ActiveRecord
-     */
-    public function getAdminRole()
-    {
-        return $this->hasOne(AdminRole::className(), ['id' => 'role_id'])->asArray()->one();
+
+                                    [ ['username'] , 'string', 'min'=>0,'max'=> 255],
+                    
+
+
+                
+
+                                    [ ['auth_key'] , 'required' ],
+                    
+
+                
+
+
+                                    [ ['auth_key'] , 'string', 'min'=>0,'max'=> 32],
+                    
+
+
+                
+
+                                    [ ['password_hash'] , 'required' ],
+                    
+
+                
+
+
+                                    [ ['password_hash'] , 'string', 'min'=>0,'max'=> 255],
+                    
+
+
+                
+
+                
+
+                                    [ ['email'] , 'required' ],
+                    
+
+                
+
+
+                                    [ ['email'] , 'string', 'min'=>0,'max'=> 255],
+                    
+
+
+                
+
+                                    [ ['status'] , 'required' ],
+                    
+
+                                    [ ['status'] , 'integer' ],
+                    
+
+
+                
+
+
+                
+
+                                    [ ['created_at'] , 'required' ],
+                    
+
+                                    [ ['created_at'] , 'integer' ],
+                    
+
+
+                
+
+
+                
+
+                                    [ ['updated_at'] , 'required' ],
+                    
+
+                                    [ ['updated_at'] , 'integer' ],
+                    
+
+
+                
+
+
+                        ];
     }
 
 

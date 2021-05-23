@@ -23,8 +23,8 @@ class ApidocController extends Controller
 
         $path =
             \Yii::getAlias("@vendor/bin/apidoc  guide   ")
-            .\Yii::getAlias("@vendor/../doc/apimd ")
-            .\Yii::getAlias("@vendor/../doc/apiguide/  --interactive=0")
+            .\Yii::getAlias("@frontend/web/apimd ")
+            .\Yii::getAlias("@frontend/web/apiguide/  --interactive=0")
         ;
         exec($path);
     }

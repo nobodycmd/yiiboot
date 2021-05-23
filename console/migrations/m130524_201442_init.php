@@ -13,6 +13,7 @@ class m130524_201442_init extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
+
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull()->unique(),
@@ -25,6 +26,16 @@ class m130524_201442_init extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->createTable('{{%simpleconfig}}', [
+            'id' => $this->primaryKey(),
+            'name' => $this->char(200)->notNull()->comment('名称'),
+            'label'=> $this->char(200)->defaultValue('')->comment('显示名称'),
+            'value'=> $this->text()->defaultValue(null)->comment('值'),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
+        ]);
+        $this->addCommentOnTable('{{%simpleconfig}}','配置存储');
     }
 
     public function down()

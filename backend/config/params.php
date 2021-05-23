@@ -5,4 +5,5 @@ return [
         [
 //            'index/main'
         ],
+
 ];

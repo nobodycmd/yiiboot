@@ -8,6 +8,7 @@
 namespace console\controllers;
 
 use yii\console\Controller;
+use yii\helpers\FileHelper;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -25,6 +26,8 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo $message . "\n";
+        var_dump(\Yii::$app->getRequest(),
+            method_exists(\Yii::$app->getRequest(),'getUserIP')
+            );
     }
 }

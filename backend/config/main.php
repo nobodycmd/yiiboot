@@ -118,12 +118,16 @@ if (!YII_ENV_TEST) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'generators' => [ // here
-            'kartikgii-crud' => ['class' => 'warrence\kartikgii\crud\Generator'],
+            'kartikgii-crud' => [
+                'class' => 'warrence\kartikgii\crud\Generator',
+                'templates' => [ // setting for our templates
+                    'customize' => '@backend/gii-templates/yii2-kartikgii',
+                ]
+            ],
             'crud' => [ // generator name
                 'class' => 'yii\gii\generators\crud\Generator', // generator class
                 'templates' => [ // setting for our templates
-                    'customize' => '@backend/gii/templates/crud/simple',
-                    'adminlte' => '@vendor/dmstr/yii2-adminlte-asset/gii/templates/crud/simple',
+                    'customize' => '@backend/gii-templates/adminlte2',
                 ]
             ],
         ]

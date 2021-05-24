@@ -24,4 +24,9 @@ class SiteController extends BaseController
     {
         return 'hi';
     }
+
+    public function actionIndex2()
+    {
+        return $this->returnTipMsg('hi three');
+    }
 }

@@ -52,6 +52,23 @@ class BaseController extends Controller
         return [];
     }
 
+
+
+    public function returnNeedLogin(){
+        $this->response->setStatusCode(401);
+        return 'need to login';
+    }
+
+
+
+    public function returnTipMsg($msg=''){
+        //随便一个code，不等于401就行
+        $this->response->setStatusCode(500);
+        return $msg;
+    }
+
+
+
     public function isWeChatBrowser()
     {
         if(isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -60,6 +77,8 @@ class BaseController extends Controller
         }
         return false;
     }
+
+
 
     public function isIOSChecking()
     {

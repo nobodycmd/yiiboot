@@ -24,9 +24,9 @@ use Yii;
 
 
 /**
-* @PROPERTY_BEGIN
+* @PROPERTY_BEGIN 千万千万不要删除这行
 属性占位符
-* @PROPERTY_END
+* @PROPERTY_END 千万千万不要删除这行
 */
 class <?= $className ?>  extends \common\models\<?= $className ?>  <?= $isIdentifyTable ? ' implements IdentityInterface' : '' ?>{
 

@@ -7,7 +7,6 @@
 
 namespace console\controllers;
 
-use common\models\Zb_new_user_head_decoration;
 use yii\console\Controller;
 use yii\helpers\ArrayHelper;
 
@@ -23,8 +22,8 @@ class ApidocController extends Controller
 
         $path =
             \Yii::getAlias("@vendor/bin/apidoc  guide   ")
-            .\Yii::getAlias("@frontend/web/apimd ")
-            .\Yii::getAlias("@frontend/web/apiguide/  --interactive=0")
+            .\Yii::getAlias("@api/web/apimd ")
+            .\Yii::getAlias("@api/web/apiguide/  --interactive=0")
         ;
         exec($path);
     }

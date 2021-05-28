@@ -26,8 +26,6 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        var_dump(\Yii::$app->getRequest(),
-            method_exists(\Yii::$app->getRequest(),'getUserIP')
-            );
+        echo \time();exit;
     }
 }

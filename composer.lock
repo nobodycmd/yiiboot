@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "003f6b74817c26e1fa2ecd3d323307e4",
+    "content-hash": "cb9459d941358918133bd4d2776c53de",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -798,6 +798,44 @@
                 "source": "https://github.com/FortAwesome/Font-Awesome/tree/v4.7.0"
             },
             "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "godv/yii2-crontab",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitee.com/jianglibin/yii2-crontab",
+                "reference": "8b0dae9bcb062cfa9eacd5750b30628266e75e64"
+            },
+            "require": {
+                "mmarica/display-table": "^1.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "CrontabConsole\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "libin jiang",
+                    "email": "497012571@qq.com"
+                }
+            ],
+            "description": "基于yii2命令行的定时任务组件扩展",
+            "keywords": [
+                "crontab",
+                "linux crontab",
+                "timer",
+                "yii2-crontab"
+            ],
+            "time": "2020-10-30T10:26:11+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -2966,6 +3004,55 @@
                 "source": "https://github.com/mvriel/TextToLatex/tree/master"
             },
             "time": "2015-12-13T07:33:35+00:00"
+        },
+        {
+            "name": "mmarica/display-table",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mmarica/php-display-table.git",
+                "reference": "3c9240e1d3406d8bf38a813ed17f7f8dfa6209b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mmarica/php-display-table/zipball/3c9240e1d3406d8bf38a813ed17f7f8dfa6209b4",
+                "reference": "3c9240e1d3406d8bf38a813ed17f7f8dfa6209b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmarica\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mihai Marica",
+                    "email": "mihai.marica82@yahoo.com",
+                    "homepage": "http://www.mihai-marica.ro"
+                }
+            ],
+            "description": "Display tables in text format",
+            "keywords": [
+                "console table",
+                "terminal table",
+                "text table"
+            ],
+            "support": {
+                "issues": "https://github.com/mmarica/php-display-table/issues",
+                "source": "https://github.com/mmarica/php-display-table/tree/master"
+            },
+            "time": "2017-01-22T20:44:08+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -8001,7 +8088,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mdmsoft/yii2-admin": 20,
-        "warrence/yii2-kartikgii": 20
+        "warrence/yii2-kartikgii": 20,
+        "godv/yii2-crontab": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

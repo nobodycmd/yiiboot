@@ -223,74 +223,49 @@
 </script>
 
 <?php
-// 参数2个,都为可选参数
-// $name 上传文件地址的hidden input，多个文件的话，名称应该是 filesrc[] 这种带[] 的
-// $value 以前上传的文件地址，单个字符串或者字符串数组
-
-if(isset($name) && $name){
-    $filedName = $name;
-}else{
-    if(isset($onlyone)){
-        $filedName = 'file';
-    }else {
-        $filedName = 'files[]';
-    }
-}
-
-if(isset($label) == false){
-    $label = '云端文件';
-}
-
-//if(isset($value) == false){
-//    $value = [];
-//}
-//if(is_array($value) && count($value)==1 && isset($value[0]) && $value[0]==false){
-//    $value=[];
-//}
-
 //随机的一个上传文件的FILE INPUT
 $randomUploadName = str_shuffle('abcdfdjkeruiqpodfakljxABCADAE');
 ?>
 <script>
     var <?= $randomUploadName ?>UploadedCount = 0;
-     function <?= $randomUploadName ?>Run() {
-         var fileCount = document.getElementById('<?= $randomUploadName ?>').files.length;
-         uploadWithFileDom(document.getElementById('<?= $randomUploadName ?>'), function (fileIndex, percent) {
-             document.getElementById("<?= $randomUploadName?>info").innerHTML = '第' + fileIndex + '个文件正在上传，完成' + percent + '%';
-         }, function (fileIndex, res) {
-             if (++<?= $randomUploadName ?>UploadedCount == fileCount) {
-                 document.getElementById("<?= $randomUploadName?>info").innerHTML = '全部上传完毕';
-                 document.getElementById("<?= $randomUploadName?>").value = ''; //清空值，以支持同一文件再次上传的情况
-             }
+    function <?= $randomUploadName ?>Run() {
+        var fileCount = document.getElementById('<?= $randomUploadName ?>').files.length;
+        uploadWithFileDom(document.getElementById('<?= $randomUploadName ?>'), function (fileIndex, percent) {
+            document.getElementById("<?= $randomUploadName?>info").innerHTML = '第' + fileIndex + '个文件正在上传，完成' + percent + '%';
+        }, function (fileIndex, res) {
+            if (++<?= $randomUploadName ?>UploadedCount == fileCount) {
+                document.getElementById("<?= $randomUploadName?>info").innerHTML = '全部上传完毕';
+                document.getElementById("<?= $randomUploadName?>").value = ''; //清空值，以支持同一文件再次上传的情况
+            }
 
-             var is_img = false;
-             var is_video = false;
+            var is_img = false;
+            var is_video = false;
 
-             if (res.key.endWith('jpg') || res.key.endWith('jpeg') || res.key.endWith('png') || res.key.endWith('gif')) {
-                 is_img = true;
-             }
-             if (res.key.endWith('mp4')) {
-                 is_video = true;
-             }
+            if (res.key.endWith('jpg') || res.key.endWith('jpeg') || res.key.endWith('png') || res.key.endWith('gif')) {
+                is_img = true;
+            }
+            if (res.key.endWith('mp4')) {
+                is_video = true;
+            }
 
-             var input = '<div   style="cursor: move;display: inline-block;"  class="panel panel-default"  ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)" >';
-             input += '<div class="panel-heading">可拖动交换位置</div>';
-             input += '<div class="panel-body" style="text-align: center;">';
+            var input = '<div   style="cursor: move;display: inline-block;"  class="panel panel-default"  ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)" >';
+            input += '<div class="panel-heading">可拖动交换位置</div>';
+            input += '<div class="panel-body" style="text-align: center;">';
 
-             var src = '<?= \app\service\QiniuService::$domain ?>' + res.key;
+            var src = '<?= \app\service\QiniuService::$domain ?>' + res.key;
 
-             input += '<a  title="点我看源文件" target="_blank" href="' + src + '"> ';
-             input += src;
-             input += '</a>'
+            input += '<a  title="点我看源文件" target="_blank" href="' + src + '"> ';
+            input += src;
+            input += '</a>'
 
 
-             input += ' <input type="hidden" name="<?= $filedName ?>"  value="' + src + '" />  ';
-             input += '</div>';
-             input += '<div class="panel-footer" style="text-align: center;"><a onclick="$(this).parent().parent().remove()">删除</a></div>';
-             input += '</div>';
-             document.getElementById("<?= $randomUploadName?>data").innerHTML += input;
-         })
-     }
+            input += ' <input type="hidden" name="<?= $filedName ?>"  value="' + src + '" />  ';
+            input += '</div>';
+            input += '<div class="panel-footer" style="text-align: center;"><a onclick="$(this).parent().parent().remove()">删除</a></div>';
+            input += '</div>';
+            document.getElementById("<?= $randomUploadName?>data").innerHTML += input;
+        })
+    }
 </script>
 
 <br>
@@ -299,35 +274,28 @@ $randomUploadName = str_shuffle('abcdfdjkeruiqpodfakljxABCADAE');
     <div class="col-sm-12">
 
 
-            <div id="<?= $randomUploadName ?>wrap-for-upload" class="form-group field-zb_new_head_decoration_goods-online">
-                <label class=" col-md-2 control-label " ><?= $label?>：</label>
-                <div class="col-md-10">
-                    <input class="col-md-offset-1  col-sm-3" type="file" <?= is_array($value) === false ? "" : "multiple"  ?> id="<?= $randomUploadName ?>" onchange="<?= $randomUploadName ?>Run()" />
-                    <div id="<?= $randomUploadName ?>data" class="col-sm-12" >
-                        <?php
-                        if($value == false){
-                            $value = [];
-                        }else {
-                            if (is_string($value)) {
-                                $value = [$value];
-                            }
-                        }
-                        foreach ($value as $src){
-                            $srcString = strtolower($src);
-                            ?>
-                            <div>
-                                <input type="hidden" name="<?= $filedName ?>"  value="<?= $src ?>" />
-                                <a   target="_blank" href="<?= $src ?>">   <?= $src ?></a>
-                                <a onclick="$(this).parent().remove()">删除</a>
-                            </div>
-                        <?php
-                        }
+        <div id="<?= $randomUploadName ?>wrap-for-upload" class="form-group field-zb_new_head_decoration_goods-online">
+            <label class=" col-md-2 control-label " ><?= $label?>：</label>
+            <div class="col-md-10">
+                <input class="col-md-offset-1  col-sm-3" type="file" <?= $isMulti === false ? "" : "multiple"  ?> id="<?= $randomUploadName ?>" onchange="<?= $randomUploadName ?>Run()" />
+                <div id="<?= $randomUploadName ?>data" class="col-sm-12" >
+                    <?php
+                    foreach ($value as $src){
+                        $srcString = strtolower($src);
                         ?>
-                    </div>
-                    <div id="<?= $randomUploadName?>info"> </div>
-                    <div class="help-block"></div>
+                        <div>
+                            <input type="hidden" name="<?= $filedName ?>"  value="<?= $src ?>" />
+                            <a   target="_blank" href="<?= $src ?>">   <?= $src ?></a>
+                            <a onclick="$(this).parent().remove()">删除</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
+                <div id="<?= $randomUploadName?>info"> </div>
+                <div class="help-block"></div>
             </div>
+        </div>
 
 
     </div>

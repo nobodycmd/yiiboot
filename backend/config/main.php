@@ -104,6 +104,12 @@ $config = [
         ]
     ],
     'params' => $params,
+    'controllerMap' => [
+        'ckeditor' => [
+            'class'    => 'maxwen\ckeditor\controllers\EditorController',
+            'viewPath' => '@vendor/maxwen/yii2-ckeditor-widget/views/editor'
+        ]
+    ]
 ];
 
 if (!YII_ENV_TEST) {

@@ -25,7 +25,9 @@
         "dmstr/yii2-adminlte-asset": "^2.1",
         "mdmsoft/yii2-admin": "2.x-dev",
         "warrence/yii2-kartikgii": "dev-master",
-        "godv/yii2-crontab": "dev-master"
+        "godv/yii2-crontab": "dev-master",
+        "maxwen/yii2-easy-wechat": "^1.0",
+        "maxwen/yii2-ckeditor-widget": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

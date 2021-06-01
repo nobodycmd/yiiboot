@@ -4,6 +4,7 @@ $params = array_merge(
     require(__DIR__ . '/params.php')
 );
 
+
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
@@ -28,34 +29,41 @@ return [
             'on beforeSend' => function($event) {
                 /* @var $response \yii\web\Response */
                 $response = $event->sender;
-                if ($response->data !== null) {
+                if( $response->data instanceof \yii\web\Response){
+                    Yii::$app->getResponse()->format = 'html';
+                    return $response;
+                }
+                if(class_exists('\Symfony\Component\HttpFoundation\Response') && $response->data instanceof Symfony\Component\HttpFoundation\Response){
+                    Yii::$app->getResponse()->format = 'html';
+                    return $response;
+                }
 
-                    if ($response->statusCode != 200) {
-                        $result = $response->data;
-                        if ($response->statusCode == 401) {//这个状态是需要登录专用
-                            $response->data = [
-                                'code' => $response->statusCode,
-                                'msg' => '需要登录的code',
-                                'data' => null,
-                            ];
-                        }else {//这个是直接给app等客户端一个业务或消息提示
-                            $response->data = [
-                                'code' => 200,
-                                'msg' => is_string($result) ? $result : json_encode($result),
-                                'data' => null,
-                            ];
-                        }
-                        //恢复statuscode正常 返回语意
-                        $response->statusCode = 200;
-                    } else {
-                        $result = $response->data;
+                Yii::$app->getResponse()->format = 'json';
+                if ($response->statusCode != 200) {
+                    $result = $response->data;
+                    if ($response->statusCode == 401) {//这个状态是需要登录专用
                         $response->data = [
-                            'code' => 0,
-                            'msg' => 'ok',
-                            'data' => $result,
+                            'code' => $response->statusCode,
+                            'msg' => '需要登录的code',
+                            'data' => null,
                         ];
-
+                    }else {//这个是直接给app等客户端一个业务或消息提示
+                        $response->data = [
+                            'code' => 200,
+                            'msg' => is_string($result) ? $result : json_encode($result),
+                            'data' => null,
+                        ];
                     }
+                    //恢复statuscode正常 返回语意
+                    $response->statusCode = 200;
+                } else {
+                    $result = $response->data;
+                    $response->data = [
+                        'code' => 0,
+                        'msg' => 'ok',
+                        'data' => $result,
+                    ];
+
                 }
             }
         ],
@@ -79,6 +87,12 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'wechat' => [
+            'class' => 'maxwen\easywechat\Wechat',
+            // 'userOptions' => []  # user identity class params
+            // 'sessionParam' => '' # wechat user info will be stored in session under this key
+            // 'returnUrlParam' => '' # returnUrl param stored in session
         ],
     ],
 

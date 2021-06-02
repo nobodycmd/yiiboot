@@ -28,5 +28,16 @@ return [
             'permission' => 0777,
             'file'       => \Yii::getAlias( '@api/runtime/logs/easywechat.log'),
         ],
+        /**
+         * OAuth 配置
+         *
+         * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
+         * callback：OAuth授权完成后的回调页地址
+         */
+        'oauth' => [
+            'scopes'   => ['snsapi_base'],
+            'callback' => '/mp/login',
+        ],
+
     ],
 ];

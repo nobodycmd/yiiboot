@@ -2,11 +2,6 @@
 namespace api\controllers;
 
 
-use api\models\UserOrder;
-use api\models\ZbCoinBricks;
-use common\models\User;
-use yii\db\Exception;
-
 /**
  * https://easywechat.com/docs/3.x/overview
  * maxwen\easywechat 依赖 3.x 版本
@@ -31,8 +26,7 @@ class MpController extends BaseController
             return "您好！欢迎关注我!";
         });
 
-        $response = $server->serve();
-        return $response;
+        return $server->serve()->send();
     }
 
     public function actionLogin()

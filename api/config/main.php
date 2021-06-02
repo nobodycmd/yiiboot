@@ -30,7 +30,7 @@ return [
                 /* @var $response \yii\web\Response */
                 $response = $event->sender;
 
-                if($response instanceof \yii\web\Response || $response->data instanceof \yii\web\Response){
+                if($response->data instanceof \yii\web\Response){
                     Yii::$app->getResponse()->format = 'html';
                     return $response;
                 }
@@ -38,8 +38,6 @@ return [
                     class_exists('\Symfony\Component\HttpFoundation\Response') &&
                     (
                         $response->data instanceof Symfony\Component\HttpFoundation\Response
-                        ||
-                        $response instanceof Symfony\Component\HttpFoundation\Response
                     )
                 ){
                     Yii::$app->getResponse()->format = 'html';

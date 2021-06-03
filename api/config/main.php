@@ -31,7 +31,7 @@ return [
                 $response = $event->sender;
 
                 if($response->data instanceof \yii\web\Response){
-                    Yii::$app->getResponse()->format = 'html';
+                    $response->format = 'html';
                     return $response;
                 }
                 if(
@@ -40,11 +40,14 @@ return [
                         $response->data instanceof Symfony\Component\HttpFoundation\Response
                     )
                 ){
-                    Yii::$app->getResponse()->format = 'html';
+                    $response->format = 'html';
                     return $response;
                 }
 
-                Yii::$app->getResponse()->format = 'json';
+                $response->format = 'json';
+                if(isset($_GET['xml'])){
+                    $response->format = 'xml';
+                }
                 if ($response->statusCode != 200) {
                     $result = $response->data;
                     if ($response->statusCode == 401) {//这个状态是需要登录专用

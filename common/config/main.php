@@ -17,8 +17,8 @@ return [
             // format settings for displaying each date attribute
             'displaySettings' => [
                 'date' => 'Y-m-d',
-                'time' => 'H:i:s A',
-                'datetime' => 'Y-m-d H:i:s A',
+                'time' => 'H:i:s',
+                'datetime' => 'Y-m-d H:i:s',
             ],
 
             // format settings for saving each date attribute
@@ -41,7 +41,7 @@ return [
             'dsn' => 'mysql:host=localhost;dbname=yiiboot',
             'username' => 'demo',
             'password' => '123',
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -65,7 +65,7 @@ return [
                 [
                     'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
-                    'logVars' => ['_SERVER','_GET'],
+                    'logVars' => ['_SERVER','_GET','_POST'],
                     'prefix' => function ($message) {
                         $user = Yii::$app->has('user', true) ? Yii::$app->get('user') : null;
                         $userID = $user ? $user->getId(false) : '-';

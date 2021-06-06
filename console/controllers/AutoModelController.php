@@ -54,7 +54,7 @@ class AutoModelController extends \yii\console\Controller{
                     continue;
                 }
                 $file = \Yii::getAlias("@{$a}/models/{$className}.php");
-                $fileTrait = \Yii::getAlias("@{$a}/models/{$traitClassName}Trait.php");
+                $fileTrait = \Yii::getAlias("@{$a}/models/{$traitClassName}.php");
 
                 if($a == 'common') {
                     $content = $this->render($a, [

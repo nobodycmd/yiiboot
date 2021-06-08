@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yidashi
- * Date: 2017/4/14
- * Time: 下午10:49
- */
-
 namespace api\modules\v1\controllers;
 
 
@@ -22,11 +15,6 @@ class SiteController extends BaseController
 
     public function actionIndex()
     {
-        return 'hi';
-    }
-
-    public function actionIndex2()
-    {
-        return $this->returnTipMsg('hi three');
+        return __CLASS__;
     }
 }

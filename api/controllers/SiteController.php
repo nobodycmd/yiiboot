@@ -14,10 +14,7 @@ class SiteController extends BaseController
     }
 
     public function actionIndex(){
-        return [1,2];
-        //return new Response();
-        return \Yii::$app->wechat->authorizeRequired()->send();
-        return \time();
+        return __CLASS__;
     }
 
 

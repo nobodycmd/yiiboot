@@ -1,21 +1,17 @@
 <?php
-
-namespace app\service;
+namespace service;
 
 use Qiniu\Auth;
-use Qiniu\Storage\UploadManager;
-use yii\base\Exception;
 
 class QiniuService{
-    public static $domain = 'http://img.xiaozhumeimeigou.com/';
+    public static $domain = '..';
 
     //https://developer.qiniu.com/kodo/kb/5869/store-uploads-and-downloads-the-domain-name
     public static $updomain = 'http://up.qiniup.com';
 
-    private static $ak='I-6pvYViw-4R9YiM2gCkznW1wd2ccYBDIehj4Zc5';
-    private static $sk='XLcAJ_yqYP6TnW6cdQ2crPer9yJgnZW5oCuiPiU7';
-    private static $bucket='mmgo';
-
+    private static $ak='..';
+    private static $sk='..';
+    private static $bucket='..';
 
     public static function getBucket(){
         return self::$bucket;
@@ -37,24 +33,6 @@ class QiniuService{
         $token = $auth->uploadToken(self::getBucket());
         return $token;
     }
-
-    public static function uploadFile($filePath,$key){
-        $uploadMgr = new UploadManager();
-        list($ret, $err) = $uploadMgr->putFile(self::getUploadToken(), $key, $filePath);
-        /*
-        if ($err !== null) {
-            var_dump($err);
-        } else {
-             * [
-             *  hash:"",
-             *  key: "",
-             * ]
-            var_dump($ret);
-        }
-        */
-        return $ret['key'];
-    }
-
 
     /**
      * 得到文件路径

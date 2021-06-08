@@ -12,6 +12,23 @@
 ]
  */
 
+if(function_exists('phptypename') == false) {
+    function phptypename($type)
+    {
+        switch ($type) {
+            case 'char':
+            case 'varchar':
+                return 'string';
+            case 'int':
+            case 'smallint':
+            case 'bigint':
+                return 'integer';
+
+        }
+        return $type;
+    }
+}
+
 $aryColumnName = array_values(array_column($columns,'COLUMN_NAME'));
 foreach ($aryColumnName as &$one){
     $one = strtolower($one);
@@ -32,7 +49,7 @@ use yii\db\ActiveRecord;
 <?php
 foreach($columns as $oneColumn) {
     ?>
-* @property  <?= $oneColumn['DATA_TYPE'] ?>  <?= $oneColumn['COLUMN_NAME'] ?>  <?= $oneColumn['COLUMN_COMMENT'] ?>
+* @property  <?= phptypename($oneColumn['DATA_TYPE']) ?>  $<?= $oneColumn['COLUMN_NAME'] ?> <?= $oneColumn['COLUMN_NAME'] ?>  <?= $oneColumn['COLUMN_COMMENT'] ?>
     <?php
     echo PHP_EOL;
 }?>

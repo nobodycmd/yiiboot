@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace service;
 
 /**
  * 通过文件锁提供基于操作系统的并发和并行的互斥支持

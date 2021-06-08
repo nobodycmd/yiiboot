@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace service;
 
 //支付宝API列表
 //https://docs.open.alipay.com/api_1/alipay.trade.page.pay

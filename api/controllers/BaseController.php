@@ -18,7 +18,6 @@ class BaseController extends Controller
 
             'cors' => [
                 // restrict access to
-                //'Origin' => ['http://www.myserver.com', 'https://www.myserver.com'],
                 'Origin' => ['*'],
                 // Allow only POST and PUT methods
                 //'Access-Control-Request-Method' => ['POST', 'PUT'],
@@ -78,20 +77,5 @@ class BaseController extends Controller
         return false;
     }
 
-
-
-    public function isIOSChecking()
-    {
-
-        $isChecking = false;
-
-        if ($this->getParam('systemType') == 'ios') {
-            $strVersion = SimpleConfigGetService::getIOSCheckingVersion();
-            if ($strVersion) {
-                $isChecking = in_array($this->getParam('version'), explode(',', $strVersion));
-            }
-        }
-        return $isChecking;
-    }
 
 }

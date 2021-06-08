@@ -40,7 +40,9 @@ if(file_exists($filetrait)){
 
 
     public function attributeLabels(){
-        return [
+
+
+        return parent::attributeLabels() + [
         <?php
         foreach ($columns as $onecolumn){
             ?>

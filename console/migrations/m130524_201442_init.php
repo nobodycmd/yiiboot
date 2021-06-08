@@ -42,4 +42,43 @@ class m130524_201442_init extends Migration
     {
         $this->dropTable('{{%user}}');
     }
+    public static function tableName()
+    {
+        return '{{%module}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['id', 'name'], 'required'],
+            [['status', 'type'], 'integer'],
+            [['type'], 'in', 'range' => [1, 2]],
+            [['name'], 'string', 'max' => 50],
+            [['bootstrap'], 'string', 'max' => 128],
+            [['config'], 'string'],
+            ['status', 'default', 'value' => 1],
+            [['id'], 'unique'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => '名称',
+            'bootstrap' => '初始化的应用',
+            'status' => '是否启用',
+            'config' => '配置',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+        ];
+    }
+
 }
+

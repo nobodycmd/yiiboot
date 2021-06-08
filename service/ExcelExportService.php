@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace service;
 
 /**
  * @brief 导出excel类库

@@ -1,7 +1,6 @@
 <?php
-namespace app\service;
+namespace service;
 
-use common\models\Autoid;
 use common\models\Simpleconfig;
 
 /**

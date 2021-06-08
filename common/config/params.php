@@ -1,12 +1,11 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
+    'adminEmail' => 'superboss01@163.com',
+    'supportEmail' => 'superboss01@163.com',
     'user.passwordResetTokenExpire' => 3600,
     'appVersion' => '2.0.0',
-    'appName' => '<b>Yii</b>Boot',
-    'homePage' => 'http://git.oschina.net/penngo/chadmin',
-
+    'appName' => '<b>Yii2</b>Boot',
+    'homePage' => 'https://github.com/FanRongZhang/',
 
     //配置rabc表名称
     'mdm.admin.configs' => [

@@ -2,7 +2,11 @@
 return [
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'common\\components\\LoadModule',
+        'common\\components\\LoadPlugin',
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -36,6 +40,14 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'formatter' => [
+            'dateFormat' => 'yyyy-MM-dd',
+            'datetimeFormat' => 'yyyy-MM-dd HH:mm',
+            'timeFormat' => 'HH:mm',
+            'decimalSeparator' => '.',
+            'thousandSeparator' => ',',
+            'currencyCode' => 'CNY',
+        ],
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=yiiboot',
@@ -63,7 +75,8 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\DbTarget',
+                    //'class' => 'yii\log\DbTarget',
+                    'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => ['_SERVER','_GET','_POST'],
                     'prefix' => function ($message) {
@@ -86,5 +99,6 @@ return [
         ],
 
     ],
+    'as notify' => \common\behaviors\OrderStatusNotifyBehavior::className(),
     
 ];

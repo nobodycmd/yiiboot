@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace service;
 
 use yii\web\Response;
 

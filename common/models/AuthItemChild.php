@@ -8,8 +8,8 @@ use yii\db\ActiveRecord;
 
 
 /**
-* @property  varchar  parent      
-* @property  varchar  child      
+* @property  string  $parent parent      
+* @property  string  $child child      
 */
 class AuthItemChild  extends \yii\db\ActiveRecord {
 

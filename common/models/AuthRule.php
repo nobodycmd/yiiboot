@@ -8,10 +8,10 @@ use yii\db\ActiveRecord;
 
 
 /**
-* @property  varchar  name      
-* @property  blob  data      
-* @property  int  created_at      
-* @property  int  updated_at      
+* @property  string  $name name      
+* @property  blob  $data data      
+* @property  integer  $created_at created_at      
+* @property  integer  $updated_at updated_at      
 */
 class AuthRule  extends \yii\db\ActiveRecord {
 
@@ -21,7 +21,6 @@ class AuthRule  extends \yii\db\ActiveRecord {
     {
         $ary = parent::behaviors();
         $ary[] = [
-        [
             'class' => TimestampBehavior::className(),
             'attributes' => [
             ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
@@ -29,7 +28,6 @@ class AuthRule  extends \yii\db\ActiveRecord {
             ],
             // if you're using datetime instead of UNIX timestamp:
             // 'value' => new Expression('NOW()'),
-            ],
         ];
 
     

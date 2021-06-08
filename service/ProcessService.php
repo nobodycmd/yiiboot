@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace service;
 
 /**
  * 提供进程的执行

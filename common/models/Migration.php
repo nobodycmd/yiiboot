@@ -8,8 +8,8 @@ use yii\db\ActiveRecord;
 
 
 /**
-* @property  varchar  version      
-* @property  int  apply_time      
+* @property  string  $version version      
+* @property  integer  $apply_time apply_time      
 */
 class Migration  extends \yii\db\ActiveRecord {
 

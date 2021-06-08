@@ -7,6 +7,7 @@
 
 namespace console\controllers;
 
+use common\models\Log;
 use yii\console\Controller;
 use yii\helpers\FileHelper;
 
@@ -26,6 +27,9 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo \time();exit;
+        $log = Log::find()->limit(1)->one();
+        $log->id = 999999;
+        $log->save();
+
     }
 }

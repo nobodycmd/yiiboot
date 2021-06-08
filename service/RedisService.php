@@ -1,7 +1,5 @@
 <?php
-namespace app\service;
-
-
+namespace service;
 
 
 class RedisService

@@ -12,8 +12,6 @@ use yii\helpers\Url;
  * 在后台的main.conf里面配置了该行为给
  * application 应用程序对象了
  *
- *在应用程序触发  EVENT_BEFORE_REQUEST 后，注册  ActiveRecord 的时间
- * 当ActiveRecord触发注册事件后进行log
  * @package backend\behaviors
  */
 class AdminLogBehavior extends Behavior
@@ -21,11 +19,11 @@ class AdminLogBehavior extends Behavior
     public function events()
     {
         return [
-            Application::EVENT_BEFORE_REQUEST => 'handle'
+            Application::EVENT_BEFORE_REQUEST => 'bindEvent'
         ];
     }
 
-    public function handle()
+    public function bindEvent()
     {
         Event::on(ActiveRecord::className(), ActiveRecord::EVENT_AFTER_UPDATE, [$this, 'log']);
         Event::on(ActiveRecord::className(), ActiveRecord::EVENT_AFTER_INSERT, [$this, 'log']);

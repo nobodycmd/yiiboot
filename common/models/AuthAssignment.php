@@ -8,9 +8,9 @@ use yii\db\ActiveRecord;
 
 
 /**
-* @property  varchar  item_name      
-* @property  varchar  user_id      
-* @property  int  created_at      
+* @property  string  $item_name item_name      
+* @property  string  $user_id user_id      
+* @property  integer  $created_at created_at      
 */
 class AuthAssignment  extends \yii\db\ActiveRecord {
 

@@ -8,16 +8,15 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
-* @property  int  id      
-* @property  varchar  username      
-* @property  varchar  auth_key      
-* @property  varchar  password_hash      
-* @property  varchar  password_reset_token      
-* @property  varchar  email      
-* @property  smallint  status      
-* @property  int  created_at      
-* @property  int  updated_at      
-* @property  char  access-token      
+* @property  integer  $id id      
+* @property  string  $username username      
+* @property  string  $auth_key auth_key      
+* @property  string  $password_hash password_hash      
+* @property  string  $password_reset_token password_reset_token      
+* @property  string  $email email      
+* @property  integer  $status status      
+* @property  integer  $created_at created_at      
+* @property  integer  $updated_at updated_at      
 */
 class User  extends \yii\db\ActiveRecord  implements IdentityInterface{
 
@@ -27,7 +26,6 @@ class User  extends \yii\db\ActiveRecord  implements IdentityInterface{
     {
         $ary = parent::behaviors();
         $ary[] = [
-        [
             'class' => TimestampBehavior::className(),
             'attributes' => [
             ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
@@ -35,7 +33,6 @@ class User  extends \yii\db\ActiveRecord  implements IdentityInterface{
             ],
             // if you're using datetime instead of UNIX timestamp:
             // 'value' => new Expression('NOW()'),
-            ],
         ];
 
     
@@ -82,7 +79,7 @@ class User  extends \yii\db\ActiveRecord  implements IdentityInterface{
     */
     public static function findByUsername($username)
     {
-        return static::findOne(['nick_name' => $username]);
+        return static::findOne(['username' => $username]);
     }
 
     /**

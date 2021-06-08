@@ -1,45 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * Author: ljt
- * DateTime: 2017/2/17 12:14
- * Description:
- */
-
 namespace common\modules;
 
-use common\components\PackageInfo;
-use common\models\Module;
-use rbac\models\Menu;
+use common\models\Package;
+use mdm\admin\models\Menu;
 use yii\helpers\ArrayHelper;
 
-class ModuleInfo extends PackageInfo
+class ModuleInfo
 {
-    public $isCore = 0;
 
-    private $_model;
-
-    public function getModuleClass()
+    public function install()
     {
-        return $this->getNamespace() . '\\' . 'Module';
+        return true;
     }
 
-    /**
-     * @return Module
-     */
-    public function getModel()
+    public function uninstall()
     {
-        if ($this->_model == null) {
-            $models = Module::findAllModules();
-            $model = ArrayHelper::getValue($models, $this->getPackage());
-            if ($model == null) {
-                $model = new Module();
-                $model->loadDefaultValues();
-                $model->id = $this->getPackage();
-            }
-            $this->_model = $model;
-        }
-        return $this->_model;
+        return true;
     }
 
     /**

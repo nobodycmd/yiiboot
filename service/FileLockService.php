@@ -17,7 +17,7 @@ class FileLockService
      * @param $filename
      * @param array $callable
      * @param array $param_arr
-     * @return array 返回block的结果
+     * @return array 返回['locked' =>boolean,'result'=>'callback result']的结果
      */
     public static function fileLockWithCallback($filename,$callable=[],$param_arr =[]){
         $file = self::fileViaName($filename);

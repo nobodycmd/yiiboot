@@ -26,13 +26,19 @@ class FileLockService
 
         $resultOfCallback = [];
         if($locked && $callable && is_callable($callable)){
-            //如果callable是一个死循环，代码将一直block在这里而没有返回
-            $resultOfCallback = call_user_func_array($callable,$param_arr);
-
-            //释放锁和删除文件
-            flock($fp,LOCK_UN);
-            fclose($fp);
-            file_exists($file) && unlink($file);
+            try {
+                //如果callable是一个死循环，代码将一直block在这里而没有返回
+                $resultOfCallback = call_user_func_array($callable, $param_arr);
+            }catch (\Exception $e){
+                throw $e;
+            }catch (\Throwable $e){
+                throw $e;
+            } finally {
+                //释放锁和删除文件
+                flock($fp,LOCK_UN);
+                fclose($fp);
+                file_exists($file) && unlink($file);
+            }
         }
 
 

@@ -12,6 +12,21 @@ class LoadModule extends Component implements BootstrapInterface
     public function bootstrap($app)
     {
         $appId = $app->id;
+
+        //因为console需要进行表迁移
+        //系统初始化前，package表都不存在
+        if($appId == 'console'){
+            $aryTableName = [];
+            $aryTables = $app->getDb()->createCommand('show tables')->queryAll();
+            foreach ($aryTables as $kvDbAndTableName){
+                foreach ($kvDbAndTableName as $tableName){
+                    $aryTableName[] = $tableName;
+                }
+            }
+            if(in_array(Package::tableName(),$aryTableName) == false)
+                return;
+        }
+
         $all = Package::findAll([
             'type' => 1,
             'is_install' => 1,
@@ -50,4 +65,5 @@ class LoadModule extends Component implements BootstrapInterface
             ArrayHelper::merge($config, array_key_exists($id, $definitions) ? $definitions[$id] : [])
         );
     }
+
 }

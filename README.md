@@ -1,6 +1,6 @@
 
 ## 让开发效率飞一般的感觉
-* 基于yii2高级项目模版，开箱即用常用组件支持
+* 开箱即用常用组件支持
 * 避免基础的重复性工作
 * 前台网站/后台网站/控制台/API接口分离
 * restful api多版本支持,返回格式支持json xml html
@@ -13,43 +13,22 @@
 * 自动雪花ID支持
 * 后台自动日志记录，可记录下数据的变动走向
 * 并行跨语言文件锁支持
+* [http client support](https://github.com/yiisoft/yii2-httpclient/blob/master/docs/guide/basic-usage.md)
+* [redis 支持](https://github.com/yiisoft/yii2-redis)
 * 队列任务支持，配套的supervisor配置生成
 * 系统部署优化centos nginx php-fpm
-* 其他特征。。。。
+* [官方超1000个扩展资源](https://www.yiiframework.com/extensions)
+* rundeck跨服务器任务执行管理（单独软件)
 
+
+## composer install 后
+~~~
+./yii migrate
+./yii initadminaccount
 ~~~
 
 
-
-# 配合yii2的RBAC 的bootstrap3 模版
-* ui: php composer.phar require dmstr/yii2-adminlte-asset "2.*" 
-
-* rbac: php composer.phar require mdmsoft/yii2-admin "2.x-dev"
-
-https://github.com/mdmsoft/yii2-admin
-
-
-迁移角色和路由等4个表
-./yii migrate --migrationPath=@yii/rbac/migrations
-
-
-迁移菜单和后台用户2个表
-./yii migrate --migrationPath=@mdm/admin/migrations
-
-
-日志记录
-./yii migrate --migrationPath=@yii/log/migrations/
-
-
-./yii migrate
-
-./yii initadminaccount
-
-
-# crud 
-* php composer.phar require warrence/yii2-kartikgii "dev-master"
+# crud 扩展
 * https://www.yiiframework.com/extension/yii2-kartikgii
 
 
-
-~~~

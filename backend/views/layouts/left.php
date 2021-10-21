@@ -29,14 +29,13 @@
         <ul class="sidebar-menu" data-widget="tree" >
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-gears"></i> <span>权限控制</span>
+                    <i class="fa fa-gears"></i> <span>静态MENU</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li class="treeview">
-                        <a href="/admin">管理员</a>
+                        <a href="###">系统初始化权限配置后可去掉这个静态MENU</a>
                         <ul class="treeview-menu">
-                            <li><a href="/user"><i class="fa fa-circle-o"></i> 后台用户</a></li>
                             <li class="treeview">
                                 <a href="/admin/role">
                                     <i class="fa fa-circle-o"></i> 权限 <i class="fa fa-angle-left pull-right"></i>

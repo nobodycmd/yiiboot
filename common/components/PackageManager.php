@@ -27,11 +27,11 @@ class PackageManager extends Component
     public function getAllModule(){
         if($this->allModules)return $this->allModules;
 
-        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@common/modules'));
+        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@modules'));
         foreach ($fileSystem as $item) {
             if ($item->isDir()) {
                 $path = new \SplFileInfo($item);
-                $class = 'commom\\modules\\' . $path->getBasename() . '\\Module';
+                $class = 'modules\\' . $path->getBasename() . '\\Module';
                 $this->allModules[$path->getBasename()] = $class;
             }
         }
@@ -42,11 +42,11 @@ class PackageManager extends Component
     public function getAllPlugin(){
         if($this->allPlugin)return $this->allPlugin;
 
-        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@plugin'));
+        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@plugins'));
         foreach ($fileSystem as $item) {
             if ($item->isDir()) {
                 $path = new \SplFileInfo($item);
-                $class = 'plugin\\' . $path->getBasename() . '\\Plugin';
+                $class = 'plugins\\' . $path->getBasename() . '\\Plugin';
                 $this->allPlugin[$path->getBasename()] = $class;
             }
         }
@@ -56,11 +56,11 @@ class PackageManager extends Component
     private function getAllModuleInfo(){
         if($this->allModulesInfo)return $this->allModulesInfo;
 
-        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@common/modules'));
+        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@modules'));
         foreach ($fileSystem as $item) {
             if ($item->isDir()) {
                 $path = new \SplFileInfo($item);
-                $class = 'common\\modules\\' . $path->getBasename() . '\\ModuleInfo';
+                $class = 'modules\\' . $path->getBasename() . '\\ModuleInfo';
                 $this->allModulesInfo[$path->getBasename()] = $class;
             }
         }

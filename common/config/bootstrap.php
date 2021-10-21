@@ -6,6 +6,7 @@ Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('api', dirname(dirname(__DIR__)) . '/api');
 
 
-Yii::setAlias('plugin', dirname(dirname(__DIR__)) . '/plugin');
-Yii::setAlias('job', dirname(dirname(__DIR__)) . '/job');
-Yii::setAlias('service', dirname(dirname(__DIR__)) . '/service');
+Yii::setAlias('modules', dirname(dirname(__DIR__)) . '/modules');
+Yii::setAlias('plugins', dirname(dirname(__DIR__)) . '/plugins');
+Yii::setAlias('jobs', dirname(dirname(__DIR__)) . '/jobs');
+Yii::setAlias('services', dirname(dirname(__DIR__)) . '/services');

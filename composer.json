@@ -27,7 +27,9 @@
         "warrence/yii2-kartikgii": "dev-master",
         "godv/yii2-crontab": "dev-master",
         "maxwen/yii2-easy-wechat": "^1.0",
-        "maxwen/yii2-ckeditor-widget": "^1.0"
+        "maxwen/yii2-ckeditor-widget": "^1.0",
+        "yiisoft/yii2-redis": "~2.0.0",
+        "yiisoft/yii2-httpclient": "~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

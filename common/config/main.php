@@ -50,9 +50,9 @@ return [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yiiboot',
-            'username' => 'demo',
-            'password' => '123',
+            'dsn' => 'mysql:host=localhost;dbname=test',
+            'username' => 'root',
+            'password' => '123456',
             'charset' => 'utf8mb4',
         ],
         'mailer' => [
@@ -75,8 +75,8 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    //'class' => 'yii\log\DbTarget',
-                    'class' => 'yii\log\FileTarget',
+                    'class' => 'yii\log\DbTarget',
+                    //'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => ['_SERVER','_GET','_POST'],
                     'prefix' => function ($message) {

@@ -1,7 +1,7 @@
 <?php
 namespace modules\city;
 
-class ModuleInfo extends \common\modules\ModuleInfo
+class ModuleInfo extends \modules\ModuleInfo
 {
     public function install()
     {

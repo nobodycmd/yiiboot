@@ -98,6 +98,16 @@ return [
             'mutex' => 'yii\mutex\MysqlMutex', // Mutex that used to sync queries
         ],
 
+        // setup Krajee Pdf component
+        //https://demos.krajee.com/mpdf
+        'pdf' => [
+            'class' => 'kartik\mpdf\Pdf',
+            'format' => 'A4',
+            'orientation' => 'P',
+            'destination' => 'I',
+            // refer settings section for all configuration options
+        ]
+
     ],
     'as notify' => \common\behaviors\OrderStatusNotifyBehavior::className(),
     

@@ -68,26 +68,26 @@ class PackageManager extends Component
     }
 
 
-    public function install(Package $plugin)
+    public function install(Package $package)
     {
-        if($plugin->type == 1){
+        if($package->type == 1){
             $aryModuleInfo = $this->getAllModuleInfo();
-            if(isset($aryModuleInfo[$plugin->name]))
+            if(isset($aryModuleInfo[$package->name]))
             {
                 $instance = \Yii::createObject([
-                    'class' => $aryModuleInfo[$plugin->name],
+                    'class' => $aryModuleInfo[$package->name],
                 ]);
             }
             else
                 return false;
         }else {
-            $instance = \Yii::createObject($plugin->class);
+            $instance = \Yii::createObject($package->class);
         }
         try {
-            if ($instance->install($plugin)) {
-                $plugin->is_install = 1;
-                $plugin->is_open = 1;
-                return $plugin->save();
+            if ($instance->install($package)) {
+                $package->is_install = 1;
+                $package->is_open = 1;
+                return $package->save();
             }
             return false;
         } catch(\Exception $e) {

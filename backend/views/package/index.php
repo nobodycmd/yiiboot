@@ -9,9 +9,10 @@ use yii\helpers\Html;
 $allModule = (new \common\components\PackageManager())->getAllModule();
 $allPlugin = (new \common\components\PackageManager())->getAllPlugin();
 
-$this->title = '包';
+$this->title = '系统扩展包的管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="module-index">
     <div class="alert alert-warning">
         卸载包可能会进行删除相关菜单、删除相关数据库表等操作，请确保数据没用或者已经备份的情况下进行，谨慎操作！
@@ -25,14 +26,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box box-primary">
         <div class="box-body">
-            <?= GridView::widget([
+            <?=
+            GridView::widget([
                 'dataProvider' => $dataProvider,
                 'columns' => [
                     'name:text:名字',
-                    'type',
-                    'class:text:class',
-                    'is_install',
-                    'is_open',
+                    [
+                        'attribute' => 'type',
+                        'label' => '类型',
+                        'value' => function($model){
+                            return $model->type == 1 ? '模块' : '插件';
+                        }
+                    ],
+                    'class:text:类名',
+                    [
+                        'attribute' => 'is_install',
+                        'label' => '安装',
+                        'value' => function($model){
+                            return $model->is_install == 1 ? '已安装' : '未安装';
+                        }
+                    ],
+                    [
+                        'attribute' => 'is_open',
+                        'label' => '开关',
+                        'value' => function($model){
+                            return $model->is_open == 1 ? '已打开' : '关闭中';
+                        }
+                    ],
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{open} {close} {install} {uninstall} ',

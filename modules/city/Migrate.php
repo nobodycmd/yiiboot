@@ -3360,5 +3360,4 @@ class migrate extends Migration
     {
         $this->dropTable('{{%city}}');
     }
-
 }

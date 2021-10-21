@@ -1,5 +1,5 @@
 <?php
-namespace common\modules\city\controllers;
+namespace modules\city\controllers;
 
 use modules\city\models\City;
 use yii\web\Controller;
@@ -7,7 +7,7 @@ use yii\web\Controller;
 class DefaultController extends Controller
 {
     public function actionIndex(){
-        return 'module city';
+        return '你好，访问到了 city(module) 模块的 default(controller) 下 index(action)';
     }
 
     public function actionChildren($id)

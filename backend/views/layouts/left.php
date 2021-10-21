@@ -29,18 +29,19 @@
         <ul class="sidebar-menu" data-widget="tree" >
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-gears"></i> <span>静态MENU</span>
+                    <i class="fa fa-gears"></i> <span>初始安装后菜单</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li class="treeview">
-                        <a href="###">系统初始化权限配置后可去掉这个静态MENU</a>
+                        <a href="###">开发调整后可备注掉(再点我)</a>
                         <ul class="treeview-menu">
                             <li class="treeview">
-                                <a href="/admin/role">
-                                    <i class="fa fa-circle-o"></i> 权限 <i class="fa fa-angle-left pull-right"></i>
+                                <a href="###">
+                                    <i class="fa fa-circle-o"></i> 初始菜单 <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
+                                    <li><a href="/package/index"><i class="fa fa-circle-o"></i> 扩展包管理</a></li>
                                     <li><a href="/admin/route"><i class="fa fa-circle-o"></i> 路由</a></li>
                                     <li><a href="/admin/permission"><i class="fa fa-circle-o"></i> 权限</a></li>
                                     <li><a href="/admin/role"><i class="fa fa-circle-o"></i> 角色</a></li>

@@ -8,6 +8,7 @@
 namespace console\controllers;
 
 use common\models\Log;
+use services\SnowFlakeIDService;
 use yii\console\Controller;
 use yii\helpers\FileHelper;
 
@@ -27,9 +28,7 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        $log = Log::find()->limit(1)->one();
-        $log->id = 999999;
-        $log->save();
+        echo (new SnowFlakeIDService())->nextId();
 
     }
 }

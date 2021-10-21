@@ -23,6 +23,14 @@
 * rundeck跨服务器任务执行管理（单独软件)
 
 
+
+## package 里面模块和插件的区别
+* 模块是独立的一个 MVC 系统，可独立存在和具备独立部署能力
+* 插件主要是依附于正在运行的app（本身就是一个默认模块），插件主要是对app里面的事件以及不同app(frontend,backend,api)进行controller类的一个新增
+* 新建一个模块或者插件，可直接拷贝现有的同级其他文件夹
+
+
+
 ## composer install 后
 ~~~
 ./yii migrate

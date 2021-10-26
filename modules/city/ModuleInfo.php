@@ -3,6 +3,8 @@ namespace modules\city;
 
 class ModuleInfo extends \modules\ModuleInfo
 {
+    public $name = '城市';
+
     public function install()
     {
         $migrate = new Migrate();

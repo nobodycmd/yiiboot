@@ -92,6 +92,7 @@ class PackageController extends BaseController
             'dataProvider' => $dataProvider,
         ]);
     }
+
     // 安装
     public function actionInstall()
     {
@@ -104,6 +105,7 @@ class PackageController extends BaseController
         }
         return $this->redirect(['index']);
     }
+
     //卸载
     public function actionUninstall()
     {

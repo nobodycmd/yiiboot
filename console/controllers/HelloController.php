@@ -28,7 +28,6 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo (new SnowFlakeIDService())->nextId();
-
+        echo \Yii::$app->basePath;
     }
 }

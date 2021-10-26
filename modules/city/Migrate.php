@@ -4,7 +4,7 @@ namespace modules\city;
 use yii\db\Migration;
 
 
-class migrate extends Migration
+class Migrate extends Migration
 {
 
     public function up()

@@ -7,6 +7,7 @@ use mdm\admin\models\Menu;
 
 class ModuleInfo
 {
+    public $name = 'module name';
 
     public function install()
     {

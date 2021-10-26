@@ -95,25 +95,28 @@ class PackageManager extends Component
         }
     }
 
-    public function uninstall(Package $plugin)
+    public function uninstall(Package $package)
     {
-        if($plugin->type == 1){
+        $instance = false;
+        //模块
+        if($package->type == 1){
             $ary = $this->getAllModuleInfo();
-            if(isset($ary[$plugin->name]) == false)
+            if(isset($ary[$package->name]))
+            {
                 $instance = \Yii::createObject([
-                    'class' => $ary[$plugin->name],
+                    'class' => $ary[$package->name],
                 ]);
-            return false;
+            }
         }else {
             $instance = \Yii::createObject([
-                'class' => $plugin->class
+                'class' => $package->class
             ]);
         }
         try {
-            if ($instance->uninstall()) {
-                $plugin->is_install = 0;
-                $plugin->is_open = 0;
-                return $plugin->save();
+            if ($instance && $instance->uninstall()) {
+                $package->is_install = 0;
+                $package->is_open = 0;
+                return $package->save();
             }
             return false;
         } catch(\Exception $e) {

@@ -26,11 +26,22 @@
         "mdmsoft/yii2-admin": "2.x-dev",
         "warrence/yii2-kartikgii": "dev-master",
         "godv/yii2-crontab": "dev-master",
-        "maxwen/yii2-easy-wechat": "^1.0",
-        "maxwen/yii2-ckeditor-widget": "^1.0",
         "yiisoft/yii2-redis": "~2.0.0",
         "yiisoft/yii2-httpclient": "~2.0.0",
-        "kartik-v/yii2-mpdf": "dev-master"
+
+
+        "symfony/yaml": "*",
+        "kartik-v/yii2-grid": "~3.0",
+        "kartik-v/yii2-mpdf": "~1.0",
+        "kartik-v/yii2-widgets": "~3.0",
+
+        "yiisoft/yii2-smarty": "^2.0",
+        "yiisoft/yii2-imagine": "^2.1",
+        "flc/dysms": "^1.0",
+        "aliyuncs/oss-sdk-php": "^2.3",
+        "2amigos/qrcode-library": "~1.1",
+        "mk-j/php_xlsxwriter": "^0.38.0"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -44,16 +55,19 @@
 
         }
     },
+    "extra": {
+
+    },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
         }
     },
-    "repositories": [
-        {
+    "repositories": {
+        "packagist": {
             "type": "composer",
-            "url": "https://asset-packagist.org"
+            "url": "https://mirrors.aliyun.com/composer/"
         }
-    ]
+    }
 }

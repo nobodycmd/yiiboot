@@ -53,13 +53,13 @@ return [
                     if ($response->statusCode == 401) {//这个状态是需要登录专用
                         $response->data = [
                             'code' => $response->statusCode,
-                            'msg' => '需要登录的code',
+                            'message' => '需要登录的code',
                             'data' => null,
                         ];
                     }else {//这个是直接给app等客户端一个业务或消息提示
                         $response->data = [
                             'code' => 200,
-                            'msg' => is_string($result) ? $result : json_encode($result),
+                            'message' => is_string($result) ? $result : json_encode($result),
                             'data' => null,
                         ];
                     }
@@ -69,7 +69,7 @@ return [
                     $result = $response->data;
                     $response->data = [
                         'code' => 0,
-                        'msg' => 'ok',
+                        'message' => 'ok',
                         'data' => $result,
                     ];
 

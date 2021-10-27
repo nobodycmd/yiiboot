@@ -30,7 +30,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'left-menu'],
                         'allow' => true,
                     ],
                     [
@@ -49,6 +49,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -59,6 +60,18 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
+    }
+
+    public function actionLeftMenu($id)
+    {
+        $theCorrectTopMenu = \common\models\AdminMenu::findOne($id);
+
+        while ($theCorrectTopMenu->parent) {
+            $theCorrectTopMenu = \common\models\AdminMenu::findOne($theCorrectTopMenu->parent);
+        }
+        return $this->renderAjax('@backend/views/layouts/left',[
+            'theCorrectTopMenu' => $theCorrectTopMenu,
+        ]);
     }
 
     /**

@@ -14,15 +14,15 @@ if (Yii::$app->controller->action->id === 'login') {
         'main-login',
         ['content' => $content]
     );
+
 } else {
 
-    if (class_exists('backend\assets\AppAsset')) {
-        backend\assets\AppAsset::register($this);
-    }
-
+    backend\assets\AppAsset::register($this);
+    backend\assets\BootstrapAsset::register($this);
     dmstr\web\AdminLteAsset::register($this);
 
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
+
     ?>
     <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -34,26 +34,40 @@ if (Yii::$app->controller->action->id === 'login') {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini ">
+
+    <body class="skin-blue fixed sidebar-mini" style="height: auto; min-height: 100%;">
     <?php $this->beginBody() ?>
-    <div class="wrapper">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
 
         <?= $this->render(
             'header.php',
-            ['directoryAsset' => $directoryAsset]
+            [
+                    'directoryAsset' => $directoryAsset,
+            ]
         ) ?>
 
         <?= $this->render(
             'left.php',
-            ['directoryAsset' => $directoryAsset]
+            [
+                'directoryAsset' => $directoryAsset,
+            ]
         )
         ?>
 
-        <?= $this->render(
-            'content.php',
-            ['content' => $content, 'directoryAsset' => $directoryAsset]
-        ) ?>
+        <!--右侧内容 开始-->
+        <div id="admin_right" class="content-wrapper">
+            <?= \dmstr\widgets\Alert::widget() ?>
+            <?= $content ?>
+        </div>
+        <!--右侧内容 结束-->
 
+        <!--顶部弹出菜单 开始-->
+        <aside class="control-sidebar control-sidebar-dark">
+            <ul class="control-sidebar-menu">
+                <li><a href="/site/logout"><i class="fa fa-circle-o text-red"></i> 退出管理</a></li>
+            </ul>
+        </aside>
+        <!--顶部弹出菜单 结束-->
     </div>
     <?php $this->endBody() ?>
     </body>

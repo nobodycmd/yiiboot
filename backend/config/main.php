@@ -80,7 +80,7 @@ $config = [
 "skin-purple-light",
 "skin-green-light"
                      */
-                    'skin' => 'skin-blue-light',
+                    'skin' => 'skin-blue',
                 ],
             ],
         ],

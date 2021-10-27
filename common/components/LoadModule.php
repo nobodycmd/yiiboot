@@ -35,18 +35,21 @@ class LoadModule extends Component implements BootstrapInterface
         foreach ($all as $model) {
             $aryName = explode('\\', $model->class);
             $id = $aryName[count($aryName) - 2];
+
+            //挂载模块
             $this->setModule($id, [
                 'class' => $model->class,
             ]);
 
-
-            if ($model->bootstrap == '*') {
-                $bootstraps = ['frontend', 'backend', 'api', 'console'];
-            } else {
-                $bootstraps = explode("|", $model->bootstrap);
-            }
-
-            $isInIt = in_array($appId, $bootstraps);
+            //是否执行模块的 bootstrap 方法
+            $isInIt = true;
+//            if ($model->bootstrap == '*') {
+//                $bootstraps = ['frontend', 'backend', 'api', 'console'];
+//            } else {
+//                $bootstraps = explode("|", $model->bootstrap);
+//            }
+//
+//            $isInIt = in_array($appId, $bootstraps);
 
             if ($isInIt) {
                 $module = \Yii::$app->getModule($model->id);

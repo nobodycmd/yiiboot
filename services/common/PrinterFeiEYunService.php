@@ -14,8 +14,9 @@ use yii\web\UnprocessableEntityHttpException;
  *
  * Class PrinterFeiEYunService
  * @package services\common
+ * @author jianyan74 <751393839@qq.com>
  */
-class PrinterFeiEYunService
+class PrinterFeiEYunService extends Service
 {
     const IP = 'https://api.feieyun.cn'; //接口IP或域名
     const PORT = 80; // 接口IP端口
@@ -26,12 +27,14 @@ class PrinterFeiEYunService
     protected $sn;
     protected $printNum;
 
-    public function __construct()
+    public function init()
     {
         $this->user = Yii::$app->debris->backendConfig('printer_feieyun_user');
         $this->uKey = Yii::$app->debris->backendConfig('printer_feieyun_ukey');
         $this->sn = Yii::$app->debris->backendConfig('printer_feieyun_sn');
         $this->printNum = Yii::$app->debris->backendConfig('printer_feieyun_print_num');
+
+        parent::init();
     }
 
     /**

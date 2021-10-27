@@ -55,6 +55,46 @@ return [
             'password' => '123456',
             'charset' => 'utf8mb4',
         ],
+
+        /** ------ 服务层 ------ **/
+        'services' => [
+            'class' => 'services\Application',
+        ],
+        /** ------ redis配置 ------ **/
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 0,
+        ],
+        /** ------ websocket redis配置 ------ **/
+        'websocketRedis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 1,
+        ],
+        /** ------ 网站碎片管理 ------ **/
+        'debris' => [
+            'class' => 'common\components\Debris',
+        ],
+        /** ------ 访问设备信息 ------ **/
+        'mobileDetect' => [
+            'class' => 'Detection\MobileDetect',
+        ],
+        /** ------ 公用支付 ------ **/
+        'pay' => [
+            'class' => 'common\components\Pay',
+        ],
+        /** ------ 上传组件 ------ **/
+        'uploadDrive' => [
+            'class' => 'common\components\UploadDrive',
+        ],
+        /** ------ 快递查询 ------ **/
+        'logistics' => [
+            'class' => 'common\components\Logistics',
+        ],
+
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
@@ -96,6 +136,7 @@ return [
             'tableName' => '{{%queue}}', // 表名
             'channel' => 'default', // Queue channel key
             'mutex' => 'yii\mutex\MysqlMutex', // Mutex that used to sync queries
+            'as log' => 'yii\queue\LogBehavior',// 日志
         ],
 
         // setup Krajee Pdf component

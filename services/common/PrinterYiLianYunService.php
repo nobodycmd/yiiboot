@@ -17,8 +17,9 @@ use yii\web\UnprocessableEntityHttpException;
 /**
  * Class PrinterYiLianYunService
  * @package services\common
+ * @author jianyan74 <751393839@qq.com>
  */
-class PrinterYiLianYunService
+class PrinterYiLianYunService extends Service
 {
     /**
      * @var YlyConfig
@@ -37,7 +38,7 @@ class PrinterYiLianYunService
      */
     protected $machineCode;
 
-    public function __construct()
+    public function init()
     {
         $this->machineCode = Yii::$app->debris->backendConfig('printer_yilianyun_terminal_number');
         $this->printNum = Yii::$app->debris->backendConfig('printer_yilianyun_print_num');
@@ -48,6 +49,8 @@ class PrinterYiLianYunService
         // 授权打印机(自有型应用使用,开放型应用请跳过该步骤)
         // $printer = new PrinterService($this->token->access_token, $this->config);
         // $data = $printer->addPrinter('你的机器码', '你的机器密钥');
+
+        parent::init();
     }
 
     /**
@@ -173,7 +176,7 @@ class PrinterYiLianYunService
     /**
      * @return array
      */
-    public function getRefreshedToken()
+    public function getRefreshedToken(): array
     {
         return $this->getToken(true);
     }
@@ -183,7 +186,7 @@ class PrinterYiLianYunService
      * @return array|object
      * @throws NotFoundHttpException
      */
-    public function getToken($refresh = false)
+    public function getToken(bool $refresh = false): array
     {
         $cacheKey = $this->getCacheKey();
         if (!$refresh && Yii::$app->cache->exists($cacheKey)) {
@@ -202,7 +205,7 @@ class PrinterYiLianYunService
      * @return $this
      * @throws NotFoundHttpException
      */
-    public function setToken(string $token, string $refresh_token, $lifetime = 7200)
+    public function setToken(string $token, string $refresh_token, int $lifetime = 7200)
     {
         $status = Yii::$app->cache->set($this->getCacheKey(), [
             'access_token' => $token,

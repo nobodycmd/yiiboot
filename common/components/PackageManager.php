@@ -10,7 +10,7 @@ use yii\helpers\FileHelper;
 class PackageManager extends Component
 {
     private $allModules = [];
-    private $allModulesInfo = [];
+    private $allModulesInstallInfo = [];
     private $allPlugin = [];
 
     /**
@@ -53,25 +53,25 @@ class PackageManager extends Component
         return $this->allPlugin;
     }
 
-    private function getAllModuleInfo(){
-        if($this->allModulesInfo)return $this->allModulesInfo;
+    private function getAllModuleInstallInfo(){
+        if($this->allModulesInstallInfo)return $this->allModulesInstallInfo;
 
         $fileSystem = new \FilesystemIterator(\Yii::getAlias('@modules'));
         foreach ($fileSystem as $item) {
             if ($item->isDir()) {
                 $path = new \SplFileInfo($item);
-                $class = 'modules\\' . $path->getBasename() . '\\ModuleInfo';
-                $this->allModulesInfo[$path->getBasename()] = $class;
+                $class = 'modules\\' . $path->getBasename() . '\\ModuleInstall';
+                $this->allModulesInstallInfo[$path->getBasename()] = $class;
             }
         }
-        return $this->allModulesInfo;
+        return $this->allModulesInstallInfo;
     }
 
 
     public function install(Package $package)
     {
         if($package->type == 1){
-            $aryModuleInfo = $this->getAllModuleInfo();
+            $aryModuleInfo = $this->getAllModuleInstallInfo();
             if(isset($aryModuleInfo[$package->name]))
             {
                 $instance = \Yii::createObject([
@@ -100,7 +100,7 @@ class PackageManager extends Component
         $instance = false;
         //模块
         if($package->type == 1){
-            $ary = $this->getAllModuleInfo();
+            $ary = $this->getAllModuleInstallInfo();
             if(isset($ary[$package->name]))
             {
                 $instance = \Yii::createObject([

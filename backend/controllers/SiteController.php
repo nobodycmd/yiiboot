@@ -64,10 +64,10 @@ class SiteController extends Controller
 
     public function actionLeftMenu($id)
     {
-        $theCorrectTopMenu = \common\models\AdminMenu::findOne($id);
+        $theCorrectTopMenu = \backend\models\AdminMenu::findOne($id);
 
         while ($theCorrectTopMenu->parent) {
-            $theCorrectTopMenu = \common\models\AdminMenu::findOne($theCorrectTopMenu->parent);
+            $theCorrectTopMenu = \backend\models\AdminMenu::findOne($theCorrectTopMenu->parent);
         }
         return $this->renderAjax('@backend/views/layouts/left',[
             'theCorrectTopMenu' => $theCorrectTopMenu,

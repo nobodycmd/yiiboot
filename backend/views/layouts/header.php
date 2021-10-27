@@ -9,14 +9,14 @@ use \mdm\admin\components\MenuHelper;
 if(isset($theCorrectTopMenu) == false){
     $path = Yii::$app->request->getPathInfo();
     if ($path) {
-        $theCorrectTopMenu = \common\models\AdminMenu::findOne([
+        $theCorrectTopMenu = \backend\models\AdminMenu::findOne([
             'route' => '/' . $path,
         ]);
     } else {
-        $theCorrectTopMenu = \common\models\AdminMenu::find()->where([])->one();
+        $theCorrectTopMenu = \backend\models\AdminMenu::find()->where([])->one();
     }
-    while ($theCorrectTopMenu->parent){
-        $theCorrectTopMenu = \common\models\AdminMenu::findOne($theCorrectTopMenu->parent);
+    while ($theCorrectTopMenu && $theCorrectTopMenu->parent){
+        $theCorrectTopMenu = \backend\models\AdminMenu::findOne($theCorrectTopMenu->parent);
     }
 }
 

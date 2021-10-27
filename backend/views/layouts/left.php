@@ -8,14 +8,14 @@ use yii\helpers\Html;
 if(isset($theCorrectTopMenu) == false){
     $path = Yii::$app->request->getPathInfo();
     if ($path) {
-        $theCorrectTopMenu = \common\models\AdminMenu::findOne([
+        $theCorrectTopMenu = \backend\models\AdminMenu::findOne([
             'route' => '/' . $path,
         ]);
     } else {
-        $theCorrectTopMenu = \common\models\AdminMenu::find()->where([])->one();
+        $theCorrectTopMenu = \backend\models\AdminMenu::find()->where([])->one();
     }
-    while ($theCorrectTopMenu->parent){
-        $theCorrectTopMenu = \common\models\AdminMenu::findOne($theCorrectTopMenu->parent);
+    while ($theCorrectTopMenu && $theCorrectTopMenu->parent){
+        $theCorrectTopMenu = \backend\models\AdminMenu::findOne($theCorrectTopMenu->parent);
     }
 }
 
@@ -42,6 +42,7 @@ $items = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$
                 'options' => [
                     'class' => 'sidebar-menu tree',
                     'data-widget' => 'tree',
+                    'id' => 'leftNavSpace',
                 ],
                 'items' => $items,
         ])
@@ -62,3 +63,28 @@ $items = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$
 <!--左侧菜单 结束-->
 
 
+<script type="text/javascript">
+    $(function () {
+        var params = window.location.pathname;
+        params = params.toLowerCase();
+
+        if (params != "/") {
+            $("#leftNavSpace li a").each(function (i) {
+                var obj = this;
+                var url = $(this).attr("href");
+                if (url == "" || url == "#") {
+                    return true;
+                }
+                url = url.toLowerCase();
+                if (url.indexOf(params) > -1) {
+                    $(this).parent().addClass("active open menu-open");
+                    $(this).parent().parent().addClass("active open menu-open");
+                    $(this).parent().parent().parent().addClass("active open menu-open");
+                    $(this).parent().parent().parent().parent().addClass("active open menu-open");
+                    $(this).parent().parent().parent().parent().parent().addClass("active open menu-open");
+                    return false;
+                }
+            });
+        }
+    });
+</script>

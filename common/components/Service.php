@@ -10,7 +10,7 @@ use common\traits\BaseAction;
 /**
  * Class Service
  * @package common\components
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Service extends Component
 {

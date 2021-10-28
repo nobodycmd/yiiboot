@@ -4,7 +4,7 @@ namespace services\common;
 
 use Yii;
 use common\enums\CacheEnum;
-use common\models\common\Provinces;
+use common\models\Provinces;
 use common\components\Service;
 use common\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -12,7 +12,7 @@ use yii\helpers\Json;
 /**
  * Class ProvincesService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class ProvincesService extends Service
 {

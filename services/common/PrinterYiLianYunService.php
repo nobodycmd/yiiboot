@@ -17,7 +17,7 @@ use yii\web\UnprocessableEntityHttpException;
 /**
  * Class PrinterYiLianYunService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class PrinterYiLianYunService extends Service
 {

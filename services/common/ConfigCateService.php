@@ -4,14 +4,14 @@ namespace services\common;
 
 use yii\db\ActiveQuery;
 use common\components\Service;
-use common\models\common\ConfigCate;
+use common\models\ConfigCate;
 use common\enums\StatusEnum;
 use common\helpers\ArrayHelper;
 
 /**
  * Class ConfigCateService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class ConfigCateService extends Service
 {

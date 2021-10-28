@@ -12,7 +12,7 @@ use common\helpers\ArrayHelper;
 /**
  * Class UploadDrive
  * @package common\components
- * @author jianyan74 <751393839@qq.com>
+
  */
 class UploadDrive
 {

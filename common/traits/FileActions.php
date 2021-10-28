@@ -6,12 +6,12 @@ use Yii;
 use yii\web\NotFoundHttpException;
 use common\helpers\ResultHelper;
 use common\helpers\UploadHelper;
-use common\models\common\Attachment;
+use common\models\Attachment;
 
 /**
  * Trait FileActions
  * @package common\traits
- * @author jianyan74 <751393839@qq.com>
+
  */
 trait FileActions
 {

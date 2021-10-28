@@ -3,7 +3,7 @@
 namespace common\components\uploaddrive;
 
 use common\helpers\RegularHelper;
-use common\models\common\Attachment;
+use common\models\Attachment;
 use League\Flysystem\Filesystem;
 use Overtrue\Flysystem\Cos\CosAdapter;
 use Overtrue\Flysystem\Qiniu\QiniuAdapter;

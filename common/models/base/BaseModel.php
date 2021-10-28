@@ -9,7 +9,7 @@ use yii\behaviors\TimestampBehavior;
 /**
  * Class BaseModel
  * @package common\models\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class BaseModel extends ActiveRecord
 {

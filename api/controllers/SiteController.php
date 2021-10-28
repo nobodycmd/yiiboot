@@ -2,19 +2,16 @@
 namespace api\controllers;
 
 
-
-use Symfony\Component\HttpFoundation\Response;
-
-class SiteController extends BaseController
+class SiteController extends \common\controllers\ApiController
 {
 
     public function authOptional()
     {
-     return ['*'];
+        return ['*'];
     }
 
     public function actionIndex(){
-        return __CLASS__;
+        echo '<center><h1>到modules里面的多版本里面去写吧</h1></center>';
     }
 
 

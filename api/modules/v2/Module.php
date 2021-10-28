@@ -4,9 +4,7 @@
 namespace api\modules\v2;
 
 
-use api\modules\BaseModule;
-
-class Module extends BaseModule
+class Module extends \common\apimodule\BaseModule
 {
     public $defaultRoute = 'site';
 

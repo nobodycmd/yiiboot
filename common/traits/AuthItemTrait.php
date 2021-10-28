@@ -17,7 +17,6 @@ use common\helpers\ResultHelper;
  * @property \yii\db\ActiveRecord|\yii\base\Model $modelClass
  * @property string $appId 应用id
  * @property string $viewPrefix 加载视图
- * @author jianyan74 <751393839@qq.com>
  */
 trait AuthItemTrait
 {

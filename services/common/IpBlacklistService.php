@@ -4,12 +4,12 @@ namespace services\common;
 
 use common\components\Service;
 use common\enums\StatusEnum;
-use common\models\common\IpBlacklist;
+use common\models\IpBlacklist;
 
 /**
  * Class IpBlacklistService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class IpBlacklistService extends Service
 {

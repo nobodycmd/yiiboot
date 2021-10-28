@@ -10,7 +10,7 @@ use common\enums\AppEnum;
 /**
  * trait BaseAction
  * @package common\traits
- * @author jianyan74 <751393839@qq.com>
+
  */
 trait BaseAction
 {

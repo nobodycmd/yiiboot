@@ -28,7 +28,7 @@ use Finecho\Logistics\OrderInterface;
  *
  * Class Logistics
  * @package common\components
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Logistics extends Service
 {

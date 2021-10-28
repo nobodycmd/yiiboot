@@ -6,15 +6,15 @@ use Yii;
 use yii\db\ActiveQuery;
 use yii\helpers\Json;
 use common\enums\StatusEnum;
-use common\models\common\Config;
+use common\models\Config;
 use common\components\Service;
-use common\models\common\ConfigValue;
+use common\models\ConfigValue;
 use common\enums\AppEnum;
 
 /**
  * Class ConfigService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class ConfigService extends Service
 {

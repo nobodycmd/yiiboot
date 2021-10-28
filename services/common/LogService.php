@@ -9,7 +9,7 @@ use common\helpers\EchantsHelper;
 use common\helpers\ArrayHelper;
 use common\components\Service;
 use common\queues\LogJob;
-use common\models\common\Log;
+use common\models\Log;
 use common\models\api\AccessToken;
 use common\enums\AppEnum;
 use common\enums\StatusEnum;
@@ -20,7 +20,7 @@ use common\enums\MessageLevelEnum;
 /**
  * Class LogService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class LogService extends Service
 {

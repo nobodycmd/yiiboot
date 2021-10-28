@@ -8,20 +8,20 @@ use yii\web\IdentityInterface;
 
 /**
 * @PROPERTY_END
-* @property  int  id  
-* @property  varchar  username  
-* @property  varchar  auth_key  
-* @property  varchar  password_hash  
-* @property  varchar  password_reset_token  
-* @property  varchar  email  
-* @property  smallint  status  
-* @property  int  created_at  
-* @property  int  updated_at  
-* @property  char  access-token  
+* @property  int  id
+* @property  varchar  username
+* @property  varchar  auth_key
+* @property  varchar  password_hash
+* @property  varchar  password_reset_token
+* @property  varchar  email
+* @property  smallint  status
+* @property  int  created_at
+* @property  int  updated_at
+* @property  char  access-token
 
 auto replace propery at 2021-05-23 00:57:52
 */
-class User  extends \common\models\User   implements IdentityInterface{
+class User  extends \common\models\User{
 
 
         // 过滤掉一些字段，特别用于

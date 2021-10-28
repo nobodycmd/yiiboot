@@ -24,19 +24,9 @@ class Yii
  * @property \common\components\Pay $pay
  * @property \common\components\Logistics $logistics
  * @property \common\components\UploadDrive $uploadDrive
- * @property \addons\TinyShop\services\Application $tinyShopService
- * @property \addons\TinyDistribution\services\Application $tinyDistributionService
- * @property \addons\Wechat\services\Application $wechatService
- * @property \addons\RfOnlineDoc\services\Application $rfOnlineDocService
- * @property \addons\TinyService\services\Application $tinyServiceService
- * @property \addons\BigWheel\services\Application $bigWheelService
- * @property \addons\LivingAliyun\services\Application $livingAliyunService
- * @property \addons\TinyForum\services\Application $tinyForumService
- * @property \Detection\MobileDetect $mobileDetect
  * @property \jianyan\easywechat\Wechat $wechat
  * @property \Da\QrCode\Component\QrCodeComponent $qr
  *
- * @author jianyan74 <751393839@qq.com>
  */
 class MyApplication
 {

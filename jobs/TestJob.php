@@ -1,7 +1,7 @@
 <?php
 namespace jobs;
 
-use services\QueueInstanceService;
+
 use yii\base\BaseObject;
 use yii\queue\JobInterface;
 use yii\queue\Queue;

@@ -10,7 +10,7 @@ use common\queues\MailerJob;
 /**
  * Class MailerService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class MailerService extends Service
 {

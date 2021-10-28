@@ -7,7 +7,7 @@ use common\models\merchant\Merchant;
 /**
  * Trait HasOneMerchant
  * @package common\traits
- * @author jianyan74 <751393839@qq.com>
+
  */
 trait HasOneMerchant
 {

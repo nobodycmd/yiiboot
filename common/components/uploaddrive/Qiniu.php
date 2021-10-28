@@ -11,7 +11,7 @@ use Overtrue\Flysystem\Qiniu\QiniuAdapter;
 /**
  * Class Qiniu
  * @package common\components\uploaddrive
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Qiniu extends DriveInterface
 {

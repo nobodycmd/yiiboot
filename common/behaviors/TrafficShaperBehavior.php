@@ -12,7 +12,7 @@ use common\components\TrafficShaper;
  *
  * Class TrafficShaperBehavior
  * @package common\behaviors
- * @author jianyan74 <751393839@qq.com>
+
  */
 class TrafficShaperBehavior extends Behavior
 {

@@ -9,7 +9,7 @@ use common\enums\StatusEnum;
 use common\helpers\ArrayHelper;
 use common\helpers\FileHelper;
 use common\helpers\WechatHelper;
-use common\models\common\PayLog;
+use common\models\PayLog;
 use common\enums\PayTypeEnum;
 
 /**

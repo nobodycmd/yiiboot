@@ -19,7 +19,7 @@ use common\helpers\ArrayHelper;
  * @property \common\components\payment\AliPay $alipay
  * @property \common\components\payment\UnionPay $union
  * @property \common\components\payment\Stripe $stripe
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Pay extends Component
 {

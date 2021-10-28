@@ -2,11 +2,8 @@
 namespace api\modules\v1\controllers;
 
 
-use api\controllers\BaseController;
-use api\modules\v1\models\Document;
-use yii\data\ActiveDataProvider;
 
-class SiteController extends BaseController
+class SiteController extends \common\controllers\ApiController
 {
     protected function authOptional()
     {

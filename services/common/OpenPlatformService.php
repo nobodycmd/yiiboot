@@ -12,7 +12,7 @@ use yii\web\UnprocessableEntityHttpException;
 /**
  * Class OpenPlatformService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class OpenPlatformService extends Service
 {

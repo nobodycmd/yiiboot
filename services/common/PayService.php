@@ -8,20 +8,20 @@ use yii\web\UnprocessableEntityHttpException;
 use common\models\forms\CreditsLogForm;
 use common\enums\PayGroupEnum;
 use common\components\Service;
-use common\models\common\PayLog;
+use common\models\PayLog;
 use common\models\forms\PayForm;
 use common\helpers\ArrayHelper;
 use common\enums\PayTypeEnum;
 use common\enums\StatusEnum;
 use common\helpers\StringHelper;
-use common\models\common\PayRefund;
+use common\models\PayRefund;
 use common\helpers\BcHelper;
 use common\enums\WechatPayTypeEnum;
 
 /**
  * Class PayService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class PayService extends Service
 {

@@ -5,12 +5,12 @@ namespace services\common;
 use common\components\Service;
 use common\enums\StatusEnum;
 use common\helpers\ArrayHelper;
-use common\models\common\BankNumber;
+use common\models\BankNumber;
 
 /**
  * Class BankNumberService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class BankNumberService extends Service
 {

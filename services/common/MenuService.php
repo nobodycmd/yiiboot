@@ -5,10 +5,10 @@ namespace services\common;
 use common\enums\AppEnum;
 use Yii;
 use yii\helpers\Json;
-use common\models\common\MenuCate;
+use common\models\MenuCate;
 use common\helpers\ArrayHelper;
 use common\components\Service;
-use common\models\common\Menu;
+use common\models\Menu;
 use common\enums\StatusEnum;
 use common\enums\WhetherEnum;
 use common\helpers\StringHelper;
@@ -18,7 +18,7 @@ use common\helpers\TreeHelper;
 /**
  * Class MenuService
  * @package services\sys
- * @author jianyan74 <751393839@qq.com>
+
  */
 class MenuService extends Service
 {

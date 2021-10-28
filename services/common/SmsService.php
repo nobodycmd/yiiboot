@@ -10,7 +10,7 @@ use common\enums\StatusEnum;
 use common\helpers\EchantsHelper;
 use common\queues\SmsJob;
 use common\components\Service;
-use common\models\common\SmsLog;
+use common\models\SmsLog;
 use common\helpers\ArrayHelper;
 use common\enums\MessageLevelEnum;
 use common\enums\SubscriptionActionEnum;
@@ -20,7 +20,7 @@ use Overtrue\EasySms\EasySms;
 /**
  * Class SmsService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class SmsService extends Service
 {

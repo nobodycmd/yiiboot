@@ -9,7 +9,7 @@ use common\enums\AppEnum;
 /**
  * Class Debris
  * @package common\components
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Debris
 {

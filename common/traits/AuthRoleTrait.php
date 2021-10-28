@@ -18,7 +18,7 @@ use common\helpers\ArrayHelper;
  * @property string $appId 应用id
  * @property bool $sourceAuthChild 权限来源(false:所有权限，true：当前角色)
  * @property string $viewPrefix 加载视图
- * @author jianyan74 <751393839@qq.com>
+
  */
 trait AuthRoleTrait
 {

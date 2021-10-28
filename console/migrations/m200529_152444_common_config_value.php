@@ -25,11 +25,11 @@ class m200529_152444_common_config_value extends Migration
         
         /* 表数据 */
         $this->insert('{{%common_config_value}}',['id'=>'1','app_id'=>'backend','config_id'=>'6','merchant_id'=>'0','data'=>'']);
-        $this->insert('{{%common_config_value}}',['id'=>'2','app_id'=>'backend','config_id'=>'1','merchant_id'=>'0','data'=>'© 2016 - 2020 RageFrame All Rights Reserved.']);
+        $this->insert('{{%common_config_value}}',['id'=>'2','app_id'=>'backend','config_id'=>'1','merchant_id'=>'0','data'=>'© yii2 All Rights Reserved.']);
         $this->insert('{{%common_config_value}}',['id'=>'3','app_id'=>'backend','config_id'=>'60','merchant_id'=>'0','data'=>'']);
         $this->insert('{{%common_config_value}}',['id'=>'4','app_id'=>'backend','config_id'=>'59','merchant_id'=>'0','data'=>'']);
-        $this->insert('{{%common_config_value}}',['id'=>'5','app_id'=>'backend','config_id'=>'4','merchant_id'=>'0','data'=>'浙ICP备17025911号-1']);
-        $this->insert('{{%common_config_value}}',['id'=>'6','app_id'=>'backend','config_id'=>'2','merchant_id'=>'0','data'=>'RageFrame']);
+        $this->insert('{{%common_config_value}}',['id'=>'5','app_id'=>'backend','config_id'=>'4','merchant_id'=>'0','data'=>'京ICP备0号-1']);
+        $this->insert('{{%common_config_value}}',['id'=>'6','app_id'=>'backend','config_id'=>'2','merchant_id'=>'0','data'=>'yii2']);
         $this->insert('{{%common_config_value}}',['id'=>'7','app_id'=>'backend','config_id'=>'5','merchant_id'=>'0','data'=>'']);
         $this->insert('{{%common_config_value}}',['id'=>'8','app_id'=>'backend','config_id'=>'7','merchant_id'=>'0','data'=>'']);
         $this->insert('{{%common_config_value}}',['id'=>'9','app_id'=>'backend','config_id'=>'52','merchant_id'=>'0','data'=>'1']);

@@ -10,7 +10,7 @@ use common\components\Service;
 /**
  * Class MapService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class MapService extends Service
 {

@@ -10,7 +10,7 @@ use JPush\Client as JPush;
 /**
  * Class JPushService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class JPushService extends Service
 {

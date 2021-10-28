@@ -8,7 +8,7 @@ use common\helpers\RegularHelper;
 /**
  * Class Local
  * @package common\components\uploaddrive
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Local extends DriveInterface
 {

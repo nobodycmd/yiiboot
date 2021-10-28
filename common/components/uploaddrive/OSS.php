@@ -5,13 +5,13 @@ namespace common\components\uploaddrive;
 use Yii;
 use yii\helpers\Json;
 use common\helpers\Url;
-use common\models\common\Attachment;
+use common\models\Attachment;
 use Xxtime\Flysystem\Aliyun\OssAdapter;
 
 /**
  * Class OSS
  * @package common\components\uploaddrive
- * @author jianyan74 <751393839@qq.com>
+
  */
 class OSS extends DriveInterface
 {

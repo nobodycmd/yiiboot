@@ -8,12 +8,12 @@ use common\helpers\ArrayHelper;
 use common\enums\StatusEnum;
 use common\components\Service;
 use common\enums\WhetherEnum;
-use common\models\common\MenuCate;
+use common\models\MenuCate;
 
 /**
  * Class MenuCateService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class MenuCateService extends Service
 {

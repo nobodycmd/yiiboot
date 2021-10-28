@@ -56,45 +56,6 @@ return [
             'charset' => 'utf8mb4',
         ],
 
-        /** ------ 服务层 ------ **/
-        'services' => [
-            'class' => 'services\Application',
-        ],
-        /** ------ redis配置 ------ **/
-        'redis' => [
-            'class' => 'yii\redis\Connection',
-            'hostname' => '127.0.0.1',
-            'port' => 6379,
-            'database' => 0,
-        ],
-        /** ------ websocket redis配置 ------ **/
-        'websocketRedis' => [
-            'class' => 'yii\redis\Connection',
-            'hostname' => '127.0.0.1',
-            'port' => 6379,
-            'database' => 1,
-        ],
-        /** ------ 网站碎片管理 ------ **/
-        'debris' => [
-            'class' => 'common\components\Debris',
-        ],
-        /** ------ 访问设备信息 ------ **/
-        'mobileDetect' => [
-            'class' => 'Detection\MobileDetect',
-        ],
-        /** ------ 公用支付 ------ **/
-        'pay' => [
-            'class' => 'common\components\Pay',
-        ],
-        /** ------ 上传组件 ------ **/
-        'uploadDrive' => [
-            'class' => 'common\components\UploadDrive',
-        ],
-        /** ------ 快递查询 ------ **/
-        'logistics' => [
-            'class' => 'common\components\Logistics',
-        ],
-
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
@@ -147,7 +108,58 @@ return [
             'orientation' => 'P',
             'destination' => 'I',
             // refer settings section for all configuration options
-        ]
+        ],
+
+
+        /** ------ 服务层 ------ **/
+        'services' => [
+            'class' => 'services\Application',
+        ],
+        /** ------ redis配置 ------ **/
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 0,
+        ],
+        /** ------ websocket redis配置 ------ **/
+        'websocketRedis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 1,
+        ],
+        /** ------ 配置信息管理 ------ **/
+        'debris' => [
+            'class' => 'common\components\Debris',
+        ],
+        /** ------ 访问设备信息 ------ **/
+        'mobileDetect' => [
+            'class' => 'Detection\MobileDetect',
+        ],
+        /** ------ 公用支付 ------ **/
+        'pay' => [
+            'class' => 'common\components\Pay',
+        ],
+        /** ------ 上传组件 ------ **/
+        'uploadDrive' => [
+            'class' => 'common\components\UploadDrive',
+        ],
+        /** ------ 快递查询 ------ **/
+        'logistics' => [
+            'class' => 'common\components\Logistics',
+        ],
+
+        /** ------ 微信SDK ------ **/
+        'wechat' => [
+            'class' => 'common\components\Wechat',
+            'userOptions' => [],  // 用户身份类参数
+            'sessionParam' => 'wechatUser', // 微信用户信息将存储在会话在这个密钥
+            'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
+            'rebinds' => [
+                'cache' => 'common\components\WechatCache',
+            ]
+        ],
 
     ],
     'as notify' => \common\behaviors\OrderStatusNotifyBehavior::className(),

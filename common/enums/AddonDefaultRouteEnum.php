@@ -2,7 +2,7 @@
 
 namespace common\enums;
 
-use common\models\common\Addons;
+use common\models\Addons;
 
 /**
  * Class AddonsDefaultRouteEnum

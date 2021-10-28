@@ -9,7 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\helpers\Json;
 use linslin\yii2\curl;
 use common\enums\StatusEnum;
-use common\models\common\Attachment;
+use common\models\Attachment;
 use common\components\uploaddrive\DriveInterface;
 
 /**

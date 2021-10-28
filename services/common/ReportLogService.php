@@ -3,13 +3,13 @@
 namespace services\common;
 
 use common\components\Service;
-use common\models\common\Log;
-use common\models\common\ReportLog;
+use common\models\Log;
+use common\models\ReportLog;
 
 /**
  * Class ReportLogService
  * @package services\common
- * @author jianyan74 <751393839@qq.com>
+
  */
 class ReportLogService extends Service
 {

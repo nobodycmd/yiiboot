@@ -18,7 +18,7 @@ use yii\redis\Connection;
  *
  * Class TrafficShaper
  * @package common\components
- * @author jianyan74 <751393839@qq.com>
+
  */
 class TrafficShaper
 {

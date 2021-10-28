@@ -23,16 +23,21 @@
 # 微信 & 文件 & 短信 & APP推送
 ~~~
 
+        "jianyan74/yii2-treegrid": "*",
         "xxtime/flysystem-aliyun-oss": "^1.2",
         "overtrue/pinyin": "~3.0",
         "overtrue/easy-sms": "^1.0",
         "overtrue/flysystem-qiniu": "^1.0",
+        "overtrue/flysystem-cos": "^2.0",
+        "league/flysystem": "^1.0",
+        "omnipay/common": "^3.0",
         "league/omnipay": "^3.0",
         "omnipay/stripe": "^3.1",
         "linslin/yii2-curl": "*",
         "jianyan74/yii2-easy-wechat": "^1.0",
         "mobiledetect/mobiledetectlib": "^2.8",
         "jpush/jpush": "*",
+
 ~~~
 
 # 电商

@@ -10,6 +10,8 @@ $config = [
     'controllerNamespace' => 'backend\controllers',
 //    'bootstrap' => ['log'],
     'modules' => [
+
+        /**  GUI manager for RBAC. */
         'admin' => [
             'class' => 'mdm\admin\Module',
              'controllerMap' => [
@@ -22,6 +24,11 @@ $config = [
         ],
         'gridview' => [
             'class' => 'kartik\grid\Module',
+        ],
+
+        /** ------ 公用模块 ------ **/
+        'common' => [
+            'class' => 'backend\modules\common\Module',
         ],
     ],
     'defaultRoute'=>'index',
@@ -105,11 +112,21 @@ $config = [
     ],
     'params' => $params,
     'controllerMap' => [
+
         'ckeditor' => [
             'class'    => 'maxwen\ckeditor\controllers\EditorController',
             'viewPath' => '@vendor/maxwen/yii2-ckeditor-widget/views/editor'
-        ]
+        ],
+
+        'file' => 'common\controllers\FileBaseController', // 文件上传公共控制器
+        'ueditor' => 'common\widgets\ueditor\UeditorController', // 百度编辑器
+        'provinces' => 'common\widgets\provinces\ProvincesController', // 省市区
+        'select-map' => 'common\widgets\selectmap\MapController', // 经纬度选择
+        'cropper' => 'common\widgets\cropper\CropperController', // 图片裁剪
+        'notify' => 'backend\widgets\notify\NotifyController', // 消息
     ]
+
+
 ];
 
 if (!YII_ENV_TEST) {

@@ -33,11 +33,13 @@
         "kartik-v/yii2-widgets": "~3.0",
 
 
+        "jianyan74/yii2-treegrid": "*",
         "xxtime/flysystem-aliyun-oss": "^1.2",
         "overtrue/pinyin": "~3.0",
         "overtrue/easy-sms": "^1.0",
         "overtrue/flysystem-qiniu": "^1.0",
         "overtrue/flysystem-cos": "^2.0",
+        "league/flysystem": "^1.0",
         "omnipay/common": "^3.0",
         "league/omnipay": "^3.0",
         "omnipay/stripe": "^3.1",

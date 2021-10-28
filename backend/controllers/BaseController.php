@@ -22,14 +22,14 @@ use yii\web\Controller;
  */
 class BaseController extends Controller
 {
-
-    public $layout = 'main';
+    public $layout =  '@backend/views/layouts/main';
 
     /**
      * @var array
      */
     public $param;
 
+    public $pageSize = 20;
 
     public function init()
     {

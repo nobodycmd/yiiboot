@@ -56,7 +56,7 @@ if (Yii::$app->controller->action->id === 'login') {
         ?>
 
         <!--右侧内容 开始-->
-        <div id="admin_right" class="content-wrapper">
+        <div id="admin_right" class="content-wrapper" style="padding-left: 10px;padding-right:10px;">
             <?= \dmstr\widgets\Alert::widget() ?>
             <?= $content ?>
         </div>

@@ -5,17 +5,13 @@ namespace common\components;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
-use common\traits\BaseAction;
 
 /**
  * Class Service
  * @package common\components
-
  */
 class Service extends Component
 {
-    use BaseAction;
-
     /**
      * 子服务
      *

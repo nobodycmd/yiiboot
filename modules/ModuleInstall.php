@@ -1,9 +1,8 @@
 <?php
 namespace modules;
 
-
-use common\helpers\MigrateHelper;
 use mdm\admin\models\Menu;
+use yii\console\controllers\MigrateController;
 
 
 class ModuleInstall
@@ -20,18 +19,31 @@ class ModuleInstall
 
     public function install()
     {
-        MigrateHelper::upByPath([
-            '@modules/'. $this->getModuleName() .'/console/migrations'
+        /**
+         * @var $migrate MigrateController
+         */
+        $migrate = \Yii::createObject([
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => [
+                '@modules/'. $this->getModuleName() .'/console/migrations',
+            ],
         ]);
-        return true;
+        $migrate->actionUp();exit;
+        return $migrate->actionUp() == 0;
     }
 
     public function uninstall()
     {
-        MigrateHelper::downByPath([
-            '@modules/'. $this->getModuleName() .'/console/migrations'
+        /**
+         * @var $migrate MigrateController
+         */
+        $migrate = \Yii::createObject([
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => [
+                '@modules/'. $this->getModuleName() .'/console/migrations',
+            ],
         ]);
-        return true;
+        return $migrate->actionDown() == 0;
     }
 
     /**

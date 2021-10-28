@@ -9,14 +9,14 @@ use yii\base\BootstrapInterface;
 use yii\base\InvalidParamException;
 use yii\web\View;
 
+/**
+ * @todo 插件的参数配置支持 $configParam
+ * Class Plugin
+ * @package plugins
+ */
 abstract class Plugin implements BootstrapInterface
 {
-
-    public $aliases = [];
-    /**
-     * @var string 模块所属应用ID(frontend,backend,api)
-     */
-    public $app = 'backend';
+    public $configParam = [];
 
     public function install()
     {
@@ -40,64 +40,7 @@ abstract class Plugin implements BootstrapInterface
 
     public function upgrade()
     {
-
-    }
-
-    /**
-     * 在菜单插件管理下添加一个新菜单
-     * @param $name
-     * @param $route
-     * @throws \yii\db\Exception
-     */
-    public function addMenu($name, $route)
-    {
-        $id = \Yii::$app->db->createCommand('SELECT `id` FROM '
-            .Menu::tableName().
-            ' WHERE `name`="插件" AND `parent` IS NULL')->queryScalar();
-        if (!$id) {
-            $model = new Menu();
-            $model->name = '插件';
-            $model->route = '';
-            $model->parent = 24;
-            $model->save();
-            $id = $model->id;
-        }
-        $model = new Menu();
-        $model->name = $name;
-        $model->route = $route;
-        $model->parent = $id;
-        $model->save();
-    }
-
-    /**
-     * 删除一个插件管理下的子菜单
-     * @param $name
-     * @throws \yii\db\Exception
-     */
-    public function deleteMenu($name)
-    {
-        \Yii::$app->db->createCommand("DELETE FROM ".Menu::tableName()." WHERE `name`='{$name}'")->execute();
-    }
-
-    /**
-     * 各插件在系统bootstrap阶段执行,前台执行frontend方法,后台执行backend方法.
-     * 比如插件要在后台添加一个控制器,则可以这样写
-     * ```
-        public function backend($app)
-        {
-            $app->controllerMap['donation'] = [
-                'class' => '\plugins\donation\controllers\AdminController',
-                'viewPath' => '@plugins/donation/views/admin'
-            ];
-        }
-     * ```
-     * @param \yii\base\Application $app
-     */
-    public function bootstrap($app)
-    {
-        if ($this->hasMethod($app->id)) {
-            call_user_func([$this, $app->id], $app);
-        }
+        return true;
     }
 
 

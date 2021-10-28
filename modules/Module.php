@@ -16,11 +16,14 @@ class Module extends \yii\base\Module
         array_pop($aryNames);
         $moduleName = array_pop($aryNames);
 
-        //指定控制器命名空间
+        //默认的controllers命名空间
         parent::init();
 
-        //指定模块的配置文件
-        if($this->autoMapControllerNamespaceAccordToAppId) {
+        //有和模块对应的controllers命名空间
+        if(
+            is_dir(\Yii::getAlias('@modules/'.strtolower(\Yii::$app->id).'/controllers'))
+            && $this->autoMapControllerNamespaceAccordToAppId
+        ) {
             $pos = strrpos($class, '\\');
             $this->controllerNamespace = substr($class, 0, $pos) . '\\' . strtolower(\Yii::$app->id) . '\\controllers';
         }

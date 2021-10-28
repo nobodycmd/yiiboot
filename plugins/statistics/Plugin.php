@@ -2,7 +2,6 @@
 
 namespace plugins\statistics;
 
-
 use yii\web\View;
 use yii\base\Event;
 

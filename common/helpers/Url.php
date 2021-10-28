@@ -14,22 +14,25 @@ use common\enums\AppEnum;
 class Url extends BaseUrl
 {
     /**
-     * 生成模块Url
-     *
+     *  生成Url，好的习惯应该是 不以 / 打头用相对路径
+     *  以 / 打头，需要指定 $moduleNameAsPrefix  或者 url 里面携带了 模块名称作为前缀路径
      * @param array $url
      * @param bool $scheme
+     * @param string $moduleNameAsPrefix
      * @return bool| string
      */
-    public static function to($url = '', $scheme = false)
+    public static function to($url = '', $moduleNameAsPrefix = '', $scheme = false)
     {
-        if (is_array($url) && !in_array(Yii::$app->id, [AppEnum::BACKEND, AppEnum::MERCHANT])) {
-            $url = static::isMerchant($url);
-        }
-
-        // 插件默认加上
-        if (is_array($url) && Yii::$app->params['inAddon'] && substr($url[0], 0, 1) == '/') {
-            $name = '/' . Yii::$app->params['addonName'];
-
+        // 模块默认加上
+        if (is_string($url) && substr($url, 0, 1) == '/') {
+            $name = '/' . $moduleNameAsPrefix;
+            //如果 url 里面不是以 $name 开始的
+            if (substr($url, 0, strlen($name)) != $name) {
+                $url = $name . $url;
+            }
+        } elseif (is_array($url) && substr($url[0], 0, 1) == '/') {
+            $name = '/' . $moduleNameAsPrefix;
+            //如果 url 里面不是以 $name 开始的
             if (substr($url[0], 0, strlen($name)) != $name) {
                 $url[0] = $name . $url[0];
             }

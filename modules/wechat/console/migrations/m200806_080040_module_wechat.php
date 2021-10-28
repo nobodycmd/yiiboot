@@ -12,7 +12,7 @@ use modules\wechat\models\ReplyRule;
 use modules\wechat\models\MessageHistory;
 use modules\wechat\models\ReplyRuleKeyword;
 
-class Migrate extends Migration
+class m200806_080040_module_wechat extends Migration
 {
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 

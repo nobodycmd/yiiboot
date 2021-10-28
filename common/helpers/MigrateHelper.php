@@ -12,7 +12,6 @@ use yii\web\UnprocessableEntityHttpException;
 /**
  * Class MigrateHelper
  * @package common\helpers
-
  */
 class MigrateHelper
 {
@@ -31,7 +30,7 @@ class MigrateHelper
     /**
      * 目录
      *
-     * @addons/RfHelpers/console/migrations
+     * @modules/xxx_module_name/console/migrations
      *
      * @var array
      */
@@ -72,7 +71,6 @@ class MigrateHelper
         foreach (self::$migrationPath as $i => $path) {
             self::$migrationPath[$i] = Yii::getAlias($path);
         }
-
         return self::up();
     }
 
@@ -98,7 +96,6 @@ class MigrateHelper
         foreach (self::$migrationNamespaces as $key => $value) {
             self::$migrationNamespaces[$key] = trim($value, '\\');
         }
-
         return self::up();
     }
 
@@ -353,8 +350,11 @@ class MigrateHelper
                     continue;
                 }
                 $path = $migrationPath . DIRECTORY_SEPARATOR . $file;
+                //preg_match('/^(m(\d{6}_?\d{6})\D.*?)\.php$/is', $file, $matches);var_dump($matches);exit;
                 if (preg_match('/^(m(\d{6}_?\d{6})\D.*?)\.php$/is', $file, $matches) && is_file($path)) {
+
                     $class = $matches[1];
+
                     if (!empty($namespace)) {
                         $class = $namespace . '\\' . $class;
                     }
@@ -365,7 +365,6 @@ class MigrateHelper
             closedir($handle);
         }
         ksort($migrations);
-
         return array_values($migrations);
     }
 

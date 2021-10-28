@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0cdee69211890a312479ff366b84119",
+    "content-hash": "49e352962e9e50eff5552cb1f2c2c246",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -1169,6 +1169,65 @@
             "time": "2020-10-30T10:26:11+00:00"
         },
         {
+            "name": "guzzlehttp/command",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/command.git",
+                "reference": "2aaa2521a8f8269d6f5dfc13fe2af12c76921034"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/command/zipball/2aaa2521a8f8269d6f5dfc13fe2af12c76921034",
+                "reference": "2aaa2521a8f8269d6f5dfc13fe2af12c76921034",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "guzzlehttp/promises": "~1.3",
+                "guzzlehttp/psr7": "~1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Command\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                }
+            ],
+            "description": "Provides the foundation for building command-based web service clients",
+            "time": "2016-11-24T13:34:15+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.5.5",
             "source": {
@@ -1240,6 +1299,72 @@
                 "web service"
             ],
             "time": "2020-06-16T21:01:06+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle-services",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle-services.git",
+                "reference": "9e3abf20161cbf662d616cbb995f2811771759f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/9e3abf20161cbf662d616cbb995f2811771759f7",
+                "reference": "9e3abf20161cbf662d616cbb995f2811771759f7",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/command": "~1.0",
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "gimler/guzzle-description-loader": "^0.0.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Command\\Guzzle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "Stefano Kowalke",
+                    "email": "blueduck@mail.org",
+                    "homepage": "https://github.com/konafets"
+                }
+            ],
+            "description": "Provides an implementation of the Guzzle Command library that uses Guzzle service descriptions to describe web services, serialize requests, and parse responses into easy to use model structures.",
+            "time": "2017-10-06T14:32:02+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2681,16 +2806,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-alert",
-            "version": "v1.1.4",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-alert.git",
-                "reference": "8be88744d2934eb0bfe701ec357fdfa8db96e3e9"
+                "reference": "6a45d7dc294eecd578cf8cb9acb671d1cafa0727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-alert/zipball/8be88744d2934eb0bfe701ec357fdfa8db96e3e9",
-                "reference": "8be88744d2934eb0bfe701ec357fdfa8db96e3e9",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-alert/zipball/6a45d7dc294eecd578cf8cb9acb671d1cafa0727",
+                "reference": "6a45d7dc294eecd578cf8cb9acb671d1cafa0727",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2738,11 +2863,7 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-alert/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-alert/tree/v1.1.4"
-            },
-            "time": "2020-06-01T18:57:02+00:00"
+            "time": "2021-10-16T10:23:22+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-colorinput",
@@ -2810,16 +2931,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
-            "version": "v1.4.7",
+            "version": "v1.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "aadeb08fe0199a62bb26940cdccafc2c169edc69"
+                "reference": "f5f8b396cf03d4a383aad5e7b338f8cb065abf66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/aadeb08fe0199a62bb26940cdccafc2c169edc69",
-                "reference": "aadeb08fe0199a62bb26940cdccafc2c169edc69",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/f5f8b396cf03d4a383aad5e7b338f8cb065abf66",
+                "reference": "f5f8b396cf03d4a383aad5e7b338f8cb065abf66",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2866,24 +2987,20 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-datepicker/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-datepicker/tree/master"
-            },
-            "time": "2018-10-09T11:34:49+00:00"
+            "time": "2021-10-28T03:58:09+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
-            "version": "v1.4.9",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datetimepicker.git",
-                "reference": "dadf042cf13cce84a877dff5f1e6893538f370cf"
+                "reference": "881985a5e482a4e37d1901c7857912ba5af3f298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datetimepicker/zipball/dadf042cf13cce84a877dff5f1e6893538f370cf",
-                "reference": "dadf042cf13cce84a877dff5f1e6893538f370cf",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datetimepicker/zipball/881985a5e482a4e37d1901c7857912ba5af3f298",
+                "reference": "881985a5e482a4e37d1901c7857912ba5af3f298",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2898,7 +3015,7 @@
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5.x-dev"
                 }
             },
             "autoload": {
@@ -2930,11 +3047,7 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-datetimepicker/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-datetimepicker/tree/master"
-            },
-            "time": "2019-05-29T12:28:51+00:00"
+            "time": "2021-10-28T03:39:38+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-depdrop",
@@ -3530,16 +3643,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-timepicker.git",
-                "reference": "c1dacfc3712bedf4f694d878279189e440a24b21"
+                "reference": "680aec2d79846e926c072da455cf6f33e1c3bb12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-timepicker/zipball/c1dacfc3712bedf4f694d878279189e440a24b21",
-                "reference": "c1dacfc3712bedf4f694d878279189e440a24b21",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-timepicker/zipball/680aec2d79846e926c072da455cf6f33e1c3bb12",
+                "reference": "680aec2d79846e926c072da455cf6f33e1c3bb12",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3586,11 +3699,7 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-timepicker/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-timepicker/tree/master"
-            },
-            "time": "2018-10-09T11:58:19+00:00"
+            "time": "2021-10-28T03:49:56+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-touchspin",
@@ -4914,6 +5023,56 @@
             "time": "2021-10-26T06:04:11+00:00"
         },
         {
+            "name": "overtrue/flysystem-cos",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/flysystem-cos.git",
+                "reference": "f6985f38f3c76a9be962f404f127b7222a9b5fff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/flysystem-cos/zipball/f6985f38f3c76a9be962f404f127b7222a9b5fff",
+                "reference": "f6985f38f3c76a9be962f404f127b7222a9b5fff",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "league/flysystem": "^1.0",
+                "php": ">=7.0",
+                "qcloud/cos-sdk-v5": "^2.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "php": ">=7.1",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\Flysystem\\Cos\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "i@overtrue.me"
+                }
+            ],
+            "description": "Flysystem adapter for the QCloud COS storage.",
+            "time": "2020-10-22T10:28:58+00:00"
+        },
+        {
             "name": "overtrue/flysystem-qiniu",
             "version": "1.0.5",
             "source": {
@@ -6043,6 +6202,67 @@
                 "simple-cache"
             ],
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "qcloud/cos-sdk-v5",
+            "version": "v2.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentyun/cos-php-sdk-v5.git",
+                "reference": "3a21def7d1a152c4c1a8fcc85c50a133bd8cc1a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentyun/cos-php-sdk-v5/zipball/3a21def7d1a152c4c1a8fcc85c50a133bd8cc1a2",
+                "reference": "3a21def7d1a152c4c1a8fcc85c50a133bd8cc1a2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.2.1",
+                "guzzlehttp/guzzle-services": ">=1.1",
+                "guzzlehttp/psr7": "<=2.1",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qcloud\\Cos\\": "src/Qcloud/Cos/"
+                },
+                "files": [
+                    "src/Qcloud/Cos/Common.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yaozongyou",
+                    "email": "yaozongyou@vip.qq.com"
+                },
+                {
+                    "name": "lewzylu",
+                    "email": "327874225@qq.com"
+                },
+                {
+                    "name": "tuunalai",
+                    "email": "550566181@qq.com"
+                }
+            ],
+            "description": "PHP SDK for QCloud COS",
+            "keywords": [
+                "cos",
+                "php",
+                "qcloud"
+            ],
+            "time": "2021-10-08T01:45:04+00:00"
         },
         {
             "name": "qiniu/php-sdk",
@@ -7654,6 +7874,58 @@
             ],
             "description": "Gii Generator base on Kartik-V extension https://github.com/kartik-v",
             "time": "2019-12-10T11:34:33+00:00"
+        },
+        {
+            "name": "xxtime/flysystem-aliyun-oss",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xxtime/flysystem-aliyun-oss.git",
+                "reference": "04b5d5b151db12799ccd20dab20bd1555c459780"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xxtime/flysystem-aliyun-oss/zipball/04b5d5b151db12799ccd20dab20bd1555c459780",
+                "reference": "04b5d5b151db12799ccd20dab20bd1555c459780",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "aliyuncs/oss-sdk-php": "~2.2",
+                "league/flysystem": "^1.0.40",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Xxtime\\Flysystem\\Aliyun\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Chu",
+                    "email": "joe@xxtime.com",
+                    "homepage": "https://github.com/xxtime",
+                    "role": "Developer"
+                }
+            ],
+            "description": "AliYun OSS adapter for flysystem. AliYun OSS v2.2.4",
+            "homepage": "https://github.com/xxtime/flysystem-aliyun-oss",
+            "keywords": [
+                "Flysystem",
+                "aliyun-oss",
+                "flysystem-aliyun-oss"
+            ],
+            "time": "2018-02-10T07:36:32+00:00"
         },
         {
             "name": "yidas/yii2-bower-asset",

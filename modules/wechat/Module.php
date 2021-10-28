@@ -42,7 +42,7 @@ class Module extends \modules\Module
      * @var string
      */
     //public $messageLayout = '@callmez/wechat/views/common/message';
-    public $messageLayout = '@modules/wechat/views/common/message';
+    public $messageLayout = '@modules/wechat/backend/views/common/message';
     /**
      * 站点后台视图
      * 如果想让微信模块和站点的后台视图一致, 则修改此视图为站点的后台视图路径即可

@@ -76,7 +76,7 @@ class OSS extends DriveInterface
             'policy' => $base64_policy,
             'signature' => $signature,
             'callback' => $base64_callback_body,
-            'x:merchant_id' => Yii::$app->services->merchant->getId(),
+            'x:merchant_id' => 0,
             'x:upload_id' => Yii::$app->request->userIP,
             'x:type' => $type,
             'x:host' => $host,

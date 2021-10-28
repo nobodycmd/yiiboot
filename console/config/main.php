@@ -20,23 +20,6 @@ return [
             ],
         ],
 
-        //https://gitee.com/jianglibin/yii2-crontab
-        'crontab' => [
-            'class' => 'CrontabConsole\controllers\CrontabController',
-            'defaultScript' => 'yii',
-            'driver' => [
-                'class' => 'CrontabConsole\drivers\File',
-                'tasks' => [
-                    //['crontab_str' => '* * * * *', 'route' => 'example/minute'],
-                    //['crontab_str' => '0 */1 * * *', 'route' => 'example/hours'],
-                ]
-                // 'class' => 'CrontabConsole\drivers\Mysql',
-                // 'dsn' => 'mysql:host=localhost;dbname=test',
-                // 'username' => 'root',
-                // 'password' => 'root',
-                // 'charset' => 'utf8',
-            ],
-        ],
     ],
     'components' => [
         'log' => [

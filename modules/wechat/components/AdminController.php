@@ -23,6 +23,9 @@ class AdminController extends BaseController
      * @var string
      */
     public $layout = '@modules/wechat/views/layouts/main';
+
+    //public $viewPath = '@modules/wechat/backend/views';
+
     /**
      * 开启设置公众号验证
      * @var bool

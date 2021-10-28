@@ -67,7 +67,7 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id,null, function($menu){
                 <li><a href="/admin/assignment"><i class="fa fa-circle-o"></i> 分配</a></li>
                 <li><a href="/admin/menu"><i class="fa fa-circle-o"></i> 菜单</a></li>
 
-                <li><a hidefocus="true" href="/package/index">扩展管理</a></li>
+                <li><a hidefocus="true" href="<?= \common\helpers\Url::to('/package/index','') ?>">扩展管理</a></li>
 
                 <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>

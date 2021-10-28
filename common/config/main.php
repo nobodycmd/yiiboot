@@ -12,8 +12,7 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    //add modules 'datecontrol' into your 'modules' section in common/config/main
-    //https://www.yiiframework.com/extension/yii2-kartikgii
+
     'modules' => [
         'datecontrol' =>  [
             'class' => 'kartik\datecontrol\Module',

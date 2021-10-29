@@ -12,7 +12,7 @@ use common\helpers\StringHelper;
  *
  * Class Map
  * @package common\widgets\selectmap
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Map extends InputWidget
 {

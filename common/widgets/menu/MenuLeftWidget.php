@@ -10,7 +10,7 @@ use yii\base\Widget;
  *
  * Class MenuLeftWidget
  * @package common\widgets\menu
- * @author jianyan74 <751393839@qq.com>
+
  */
 class MenuLeftWidget extends Widget
 {

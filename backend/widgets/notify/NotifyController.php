@@ -12,7 +12,7 @@ use backend\controllers\BaseController;
 /**
  * Class NotifyController
  * @package common\widgets\notify
- * @author jianyan74 <751393839@qq.com>
+
  */
 class NotifyController extends BaseController
 {

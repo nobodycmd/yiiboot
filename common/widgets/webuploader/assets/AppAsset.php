@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 /**
  * Class AppAsset
  * @package common\widgets\webuploader\assets
- * @author jianyan74 <751393839@qq.com>
+
  */
 class AppAsset extends AssetBundle
 {

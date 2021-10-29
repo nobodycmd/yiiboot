@@ -9,7 +9,7 @@ use common\helpers\Html;
 /**
  * Class ProvincesController
  * @package common\widgets\provinces
- * @author jianyan74 <751393839@qq.com>
+
  */
 class ProvincesController extends yii\web\Controller
 {

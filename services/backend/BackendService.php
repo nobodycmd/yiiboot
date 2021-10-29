@@ -9,7 +9,7 @@ use common\components\Service;
 /**
  * Class BackendService
  * @package services\backend
- * @author jianyan74 <751393839@qq.com>
+
  */
 class BackendService extends Service
 {

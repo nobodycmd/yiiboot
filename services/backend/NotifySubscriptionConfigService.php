@@ -10,7 +10,7 @@ use common\models\backend\NotifySubscriptionConfig;
 /**
  * Class NotifySubscriptionConfigService
  * @package services\backend
- * @author jianyan74 <751393839@qq.com>
+
  */
 class NotifySubscriptionConfigService extends Service
 {

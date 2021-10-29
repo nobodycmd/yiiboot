@@ -8,7 +8,7 @@ use yii\web\Controller;
 /**
  * Class CropperController
  * @package common\widgets\cropper
- * @author jianyan74 <751393839@qq.com>
+
  */
 class CropperController extends Controller
 {

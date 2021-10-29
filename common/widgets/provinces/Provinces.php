@@ -8,7 +8,7 @@ use yii\base\Widget;
 /**
  * Class Provinces
  * @package common\widgets\provinces
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Provinces extends Widget
 {

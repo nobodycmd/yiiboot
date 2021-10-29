@@ -11,7 +11,7 @@ use common\widgets\echarts\assets\AppAsset;
 /**
  * Class Echarts
  * @package common\widgets\echarts
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Echarts extends Widget
 {

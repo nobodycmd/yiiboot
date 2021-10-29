@@ -19,7 +19,7 @@ use League\Flysystem\Filesystem;
  *
  * Class UeditorController
  * @package common\widgets\ueditor
- * @author jianyan74 <751393839@qq.com>
+
  */
 class UeditorController extends Controller
 {

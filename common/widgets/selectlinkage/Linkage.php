@@ -11,7 +11,7 @@ use common\helpers\StringHelper;
 /**
  * Class Linkage
  * @package common\widgets\selectlinkage
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Linkage extends InputWidget
 {

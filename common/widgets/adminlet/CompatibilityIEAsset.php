@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Class CompatibilityIEAsset
  * @package backend\assets
- * @author jianyan74 <751393839@qq.com>
+
  */
 class CompatibilityIEAsset extends AssetBundle
 {

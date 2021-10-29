@@ -13,7 +13,7 @@ use common\enums\AddonDefaultRouteEnum;
  *
  * Class AddonLeftWidget
  * @package common\widgets\menu
- * @author jianyan74 <751393839@qq.com>
+
  */
 class AddonLeftWidget extends Widget
 {

@@ -19,7 +19,7 @@ use common\widgets\webuploader\assets\AppAsset;
  *
  * Class Images
  * @package common\widgets\webuploader
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Files extends InputWidget
 {

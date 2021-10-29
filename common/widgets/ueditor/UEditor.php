@@ -15,7 +15,7 @@ use common\widgets\ueditor\assets\AppAsset;
  *
  * Class UEditor
  * @package common\widgets\ueditor
- * @author jianyan74 <751393839@qq.com>
+
  */
 class UEditor extends InputWidget
 {

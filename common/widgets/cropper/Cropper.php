@@ -12,7 +12,7 @@ use common\models\common\Attachment;
 /**
  * Class Cropper
  * @package common\widgets\cropper
- * @author jianyan74 <751393839@qq.com>
+
  */
 class Cropper extends InputWidget
 {

@@ -1,8 +1,7 @@
 <?php
-namespace modules\wechat\console;
+namespace modules\wechat;
 
 use yii\db\Schema;
-use yii\db\Migration;
 use modules\wechat\models\Fans;
 use modules\wechat\models\Media;
 use modules\wechat\models\MpUser;
@@ -12,11 +11,11 @@ use modules\wechat\models\ReplyRule;
 use modules\wechat\models\MessageHistory;
 use modules\wechat\models\ReplyRuleKeyword;
 
-class m200806_080040_module_wechat extends Migration
+class Migration extends \yii\db\Migration
 {
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
-    public function safeUp()
+    public function up()
     {
         $this->initWechatTable();
         $this->initModuleTable();
@@ -27,7 +26,7 @@ class m200806_080040_module_wechat extends Migration
         $this->initMediaTable();
     }
 
-    public function safeDown()
+    public function down()
     {
         $this->dropTable(Wechat::tableName());
         $this->dropTable(ReplyRule::tableName());
@@ -49,7 +48,7 @@ class m200806_080040_module_wechat extends Migration
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . "(40) NOT NULL DEFAULT '' COMMENT '公众号名称'",
             'token' => Schema::TYPE_STRING . "(32) NOT NULL DEFAULT '' COMMENT '微信服务访问验证token'",
-            'access_token' => Schema::TYPE_STRING . "NOT  NULL DEFAULT '' COMMENT '访问微信服务验证token'",
+            'access_token' => Schema::TYPE_STRING . "(80) NOT  NULL DEFAULT '' COMMENT '访问微信服务验证token'",
             'account' => Schema::TYPE_STRING . "(30) NOT NULL DEFAULT '' COMMENT '微信号'",
             'original' => Schema::TYPE_STRING . "(40) NOT NULL DEFAULT '' COMMENT '原始ID'",
             'type' => Schema::TYPE_BOOLEAN . " UNSIGNED NOT NULL DEFAULT '0' COMMENT '公众号类型'",

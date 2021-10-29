@@ -40,14 +40,15 @@ class PackageController extends BaseController
         ];
     }
 
-    public function actionLoad(){
+    public function actionLoad()
+    {
         $manager = new PackageManager();
-        foreach ($manager->getAllModule() as $name => $className){
+        foreach ($manager->getAllModule() as $name => $className) {
             $package = Package::findOne([
                 'name' => $name,
                 'class' => $className,
             ]);
-            if($package)
+            if ($package)
                 continue;
             $package = new Package();
             $package->name = $name;
@@ -57,12 +58,12 @@ class PackageController extends BaseController
             $package->created_at = $package->updated_at = time();
             $package->save();
         }
-        foreach ($manager->getAllPlugin() as $name => $className){
+        foreach ($manager->getAllPlugin() as $name => $className) {
             $package = Package::findOne([
                 'name' => $name,
                 'class' => $className,
             ]);
-            if($package)
+            if ($package)
                 continue;
             $package = new Package();
             $package->name = $name;
@@ -98,25 +99,35 @@ class PackageController extends BaseController
     {
         $id = Yii::$app->request->post('id');
         $module = Package::findOne($id);
-        if(!$this->manager->install($module)){
-            Yii::$app->session->setFlash('error', '安装失败');
-        } else {
-            Yii::$app->session->setFlash('success', '安装成功');
+        try {
+            if (!$this->manager->install($module)) {
+                Yii::$app->session->setFlash('error', '安装失败');
+            } else {
+                Yii::$app->session->setFlash('success', '安装成功');
+            }
+            return $this->redirect(['index']);
+
+        } catch (\Exception $e) {
+            throw $e;
         }
-        return $this->redirect(['index']);
     }
 
     //卸载
     public function actionUninstall()
     {
-        $id = Yii::$app->request->post('id');
-        $module = Package::findOne($id);
-        if(!$this->manager->uninstall($module)){
-            Yii::$app->session->setFlash('error', '卸载失败');
-        } else {
-            Yii::$app->session->setFlash('success', '卸载成功');
+        try {
+            $id = Yii::$app->request->post('id');
+            $module = Package::findOne($id);
+            if (!$this->manager->uninstall($module)) {
+                Yii::$app->session->setFlash('error', '卸载失败');
+            } else {
+                Yii::$app->session->setFlash('success', '卸载成功');
+            }
+            return $this->redirect(['index']);
+
+        } catch (\Exception $e) {
+            throw $e;
         }
-        return $this->redirect(['index']);
     }
 
     // 开启
@@ -124,25 +135,26 @@ class PackageController extends BaseController
     {
         $id = Yii::$app->request->post('id');
         $module = Package::findOne($id);
-        if(!$module->is_install){
+        if (!$module->is_install) {
             Yii::$app->session->setFlash('error', '没安装');
         }
-        if(!$this->manager->open($module)){
+        if (!$this->manager->open($module)) {
             Yii::$app->session->setFlash('error', '打开失败');
         } else {
             Yii::$app->session->setFlash('success', '打开成功');
         }
         return $this->redirect(['index']);
     }
+
     // 关闭
     public function actionClose()
     {
         $id = Yii::$app->request->post('id');
         $module = Package::findOne($id);
-        if(!$module->is_install){
+        if (!$module->is_install) {
             Yii::$app->session->setFlash('error', '没安装');
         }
-        if(!$this->manager->close($module)){
+        if (!$this->manager->close($module)) {
             Yii::$app->session->setFlash('error', '关闭失败');
         } else {
             Yii::$app->session->setFlash('success', '关闭成功');

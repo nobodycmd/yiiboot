@@ -1,16 +1,12 @@
 <?php
 namespace common\components;
 
-
 use common\models\Package;
 use yii\base\Component;
-use yii\helpers\FileHelper;
-
 
 class PackageManager extends Component
 {
     private $allModules = [];
-    private $allModulesInstallInfo = [];
     private $allPlugin = [];
 
     /**
@@ -53,33 +49,14 @@ class PackageManager extends Component
         return $this->allPlugin;
     }
 
-    private function getAllModuleInstallInfo(){
-        if($this->allModulesInstallInfo)return $this->allModulesInstallInfo;
-
-        $fileSystem = new \FilesystemIterator(\Yii::getAlias('@modules'));
-        foreach ($fileSystem as $item) {
-            if ($item->isDir()) {
-                $path = new \SplFileInfo($item);
-                $class = 'modules\\' . $path->getBasename() . '\\ModuleInstall';
-                $this->allModulesInstallInfo[$path->getBasename()] = $class;
-            }
-        }
-        return $this->allModulesInstallInfo;
-    }
-
 
     public function install(Package $package)
     {
+        //模块
         if($package->type == 1){
-            $aryModuleInfo = $this->getAllModuleInstallInfo();
-            if(isset($aryModuleInfo[$package->name]))
-            {
-                $instance = \Yii::createObject([
-                    'class' => $aryModuleInfo[$package->name],
-                ]);
-            }
-            else
-                return false;
+            $instance = \Yii::createObject([
+                'class' => $package->class . 'Install',
+            ]);
         }else {
             $instance = \Yii::createObject($package->class);
         }
@@ -91,25 +68,20 @@ class PackageManager extends Component
             }
             return false;
         } catch(\Exception $e) {
-            return false;
+            throw $e;
         }
     }
 
     public function uninstall(Package $package)
     {
-        $instance = false;
         //模块
         if($package->type == 1){
-            $ary = $this->getAllModuleInstallInfo();
-            if(isset($ary[$package->name]))
-            {
-                $instance = \Yii::createObject([
-                    'class' => $ary[$package->name],
-                ]);
-            }
+            $instance = \Yii::createObject([
+                'class' => $package->class . 'Install',
+            ]);
         }else {
             $instance = \Yii::createObject([
-                'class' => $package->class
+                'class' => $package->class . 'Install'
             ]);
         }
         try {
@@ -120,7 +92,7 @@ class PackageManager extends Component
             }
             return false;
         } catch(\Exception $e) {
-            return false;
+            throw $e;
         }
     }
 

@@ -162,5 +162,5 @@ return [
 
     ],
     'as notify' => \common\behaviors\OrderStatusNotifyBehavior::className(),
-    
+
 ];

@@ -39,11 +39,6 @@ class Bootstrap implements BootstrapInterface
 //                ];
 //            }
 //        }
-//        if (!$app->hasMethod('gridview')) { // 设置 GridView模块
-//            $app->setModule('gridview', [
-//                'class' => '\kartik\grid\Module'
-//            ]);
-//        }
 
     }
 }

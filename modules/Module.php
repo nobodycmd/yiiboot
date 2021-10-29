@@ -3,7 +3,7 @@ namespace modules;
 
 use common\helpers\ArrayHelper;
 
-class Module extends \yii\base\Module
+abstract class Module extends \yii\base\Module
 {
     //是否自动结合主体应用的app id进行空间赋值
     public $autoMapControllerNamespaceAccordToAppId = true;
@@ -19,9 +19,10 @@ class Module extends \yii\base\Module
         //默认的controllers命名空间
         parent::init();
 
-        //有和模块对应的controllers命名空间
+        //找到了对应的目录
+        //即有和模块对应的controllers命名空间
         if(
-            is_dir(\Yii::getAlias('@modules/'.strtolower(\Yii::$app->id).'/controllers'))
+            is_dir(\Yii::getAlias('@modules/'.$moduleName . '/' .strtolower(\Yii::$app->id).'/controllers'))
             && $this->autoMapControllerNamespaceAccordToAppId
         ) {
             $pos = strrpos($class, '\\');

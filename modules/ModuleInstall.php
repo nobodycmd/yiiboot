@@ -5,7 +5,7 @@ use mdm\admin\models\Menu;
 use yii\console\controllers\MigrateController;
 
 
-class ModuleInstall
+abstract class ModuleInstall
 {
     public $menuName = false;
 
@@ -17,34 +17,26 @@ class ModuleInstall
         return array_pop($aryNames);
     }
 
-    public function install()
+    public abstract function install();
+
+    public abstract function uninstall();
+
+    public function installByPath()
     {
         /**
          * @var $migrate MigrateController
          */
         $migrate = \Yii::createObject([
-            'class' => 'yii\console\controllers\MigrateController',
+            'class' => 'common\controllers\MigrateController',
             'migrationPath' => [
                 '@modules/'. $this->getModuleName() .'/console/migrations',
             ],
+            'db' => \Yii::$app->getDb(),
+            'moduleName' => $this->getModuleName(),
         ]);
-        $migrate->actionUp();exit;
         return $migrate->actionUp() == 0;
     }
 
-    public function uninstall()
-    {
-        /**
-         * @var $migrate MigrateController
-         */
-        $migrate = \Yii::createObject([
-            'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => [
-                '@modules/'. $this->getModuleName() .'/console/migrations',
-            ],
-        ]);
-        return $migrate->actionDown() == 0;
-    }
 
     /**
      * 在菜单插件管理下添加一个新菜单

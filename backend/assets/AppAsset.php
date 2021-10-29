@@ -3,25 +3,38 @@
 namespace backend\assets;
 
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
+use common\widgets\adminlet\AdminLetAsset;
 
 /**
- * Main backend application asset bundle.
+ * Class AppAsset
+ * @package backend\assets
  */
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $baseUrl = '@web/resources';
+
     public $css = [
-        'css/site.css',
-    ];
-    public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'backend\assets\BootstrapAsset',
+        'plugins/toastr/toastr.min.css', // 状态通知
+        'plugins/fancybox/jquery.fancybox.min.css', // 图片查看
+        'plugins/cropper/cropper.min.css',
+        //'css/rageframe.css',
+        'css/rageframe.widgets.css',
     ];
 
-//    public $jsOptions = [
-//        'position' => \yii\web\View::POS_HEAD
-//    ];
+    public $js = [
+        'plugins/layer/layer.js',
+        'plugins/sweetalert/sweetalert.min.js',
+        'plugins/fancybox/jquery.fancybox.min.js',
+        'js/template.js',
+        'js/rageframe.js',
+        'js/rageframe.widgets.js',
+    ];
+
+    public $depends = [
+        YiiAsset::class,
+        AdminLetAsset::class,
+        HeadJsAsset::class
+    ];
 }

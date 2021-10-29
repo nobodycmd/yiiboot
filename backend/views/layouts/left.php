@@ -33,7 +33,6 @@ $items = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$
             </div>
             <div class="pull-left info">
                 <p><?= Yii::$app->getUser()->getIdentity()?Yii::$app->getUser()->getIdentity()->username:'游客' ?></p>
-                <a href="#">ip:<?= Yii::$app->request->getUserIP() ?></a>
             </div>
         </div>
 
@@ -48,16 +47,12 @@ $items = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$
         ])
         ?>
 
-        <!--
 
         <ul class="sidebar-menu tree" data-widget="tree">
-            <li class="header">模块菜单</li>
-
             <li class="header">快速导航</li>
-            <li><a href="{$item['url']}"><i class="fa fa-star-o"></i> <span>{$item['naviga_name']}</span></a></li>
-
+            <li><a href=""><i class="fa fa-star-o"></i> <span>{$item['naviga_name']}</span></a></li>
         </ul>
-         -->
+
     </section>
 </aside>
 <!--左侧菜单 结束-->

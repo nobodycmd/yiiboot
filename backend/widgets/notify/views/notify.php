@@ -14,7 +14,10 @@ use common\helpers\Url;
         <li class="body">
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
-                <?php foreach ($notify as $item) { ?>
+                <?php
+                if($notify){
+                foreach ($notify as $item) {
+                    ?>
                     <li>
                         <a href="javascript:void (0);">
                             收到一条<?= $item['type']; ?>消息
@@ -23,7 +26,11 @@ use common\helpers\Url;
                             </small>
                         </a>
                     </li>
-                <?php } ?>
+                <?php
+                }
+                }
+                ?>
+
                 <?php if (empty($notify)) { ?>
                     <li class="text-center">
                         <a href="javascript:void (0);" style="color: #ccc">

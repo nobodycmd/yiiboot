@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6b6aa0678f1dc91553fac0f1304aab8",
+    "content-hash": "1e26d5fc3713d699f93f09f88d288b2e",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -2197,6 +2197,66 @@
             "time": "2021-09-01T11:49:18+00:00"
         },
         {
+            "name": "kartik-v/yii2-date-range",
+            "version": "v1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-date-range.git",
+                "reference": "7d80d6e2598e252487fe1acf911b8cb43f45e3b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/7d80d6e2598e252487fe1acf911b8cb43f45e3b1",
+                "reference": "7d80d6e2598e252487fe1acf911b8cb43f45e3b1",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=3.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\daterange\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An advanced Yii 2 date range picker input for based on bootstrap-daterangepicker plugin.",
+            "homepage": "https://github.com/kartik-v/yii2-date-range",
+            "keywords": [
+                "bootstrap",
+                "bootstrap 3",
+                "date",
+                "date-range",
+                "extension",
+                "range",
+                "time",
+                "widget",
+                "yii2"
+            ],
+            "time": "2021-09-01T12:16:39+00:00"
+        },
+        {
             "name": "kartik-v/yii2-datecontrol",
             "version": "v1.9.8",
             "source": {
@@ -2955,7 +3015,7 @@
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
-            "version": "v1.4.8",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
@@ -3015,7 +3075,7 @@
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
-            "version": "v1.5.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datetimepicker.git",
@@ -3404,16 +3464,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-select2",
-            "version": "v2.2.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "5b3c91df7908193981033cb7ca52e83303197753"
+                "reference": "b3c74af0612d47928d64e04efaae242d7611dda2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/5b3c91df7908193981033cb7ca52e83303197753",
-                "reference": "5b3c91df7908193981033cb7ca52e83303197753",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/b3c74af0612d47928d64e04efaae242d7611dda2",
+                "reference": "b3c74af0612d47928d64e04efaae242d7611dda2",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3460,17 +3520,13 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-select2/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-select2/tree/v2.2.2"
-            },
             "funding": [
                 {
                     "url": "https://opencollective.com/yii2-widget-select2",
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-09-02T14:24:31+00:00"
+            "time": "2021-10-06T11:17:54+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -7034,16 +7090,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.4.30",
+            "version": "v4.4.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "09b3202651ab23ac8dcf455284a48a3500e56731"
+                "reference": "b9a91102f548e0111f4996e8c622fb1d1d479850"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/09b3202651ab23ac8dcf455284a48a3500e56731",
-                "reference": "09b3202651ab23ac8dcf455284a48a3500e56731",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/b9a91102f548e0111f4996e8c622fb1d1d479850",
+                "reference": "b9a91102f548e0111f4996e8c622fb1d1d479850",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7101,7 +7157,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-26T15:51:23+00:00"
+            "time": "2021-10-07T15:31:35+00:00"
         },
         {
             "name": "symfony/mime",
@@ -11017,16 +11073,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.30",
+            "version": "v4.4.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a3f7189a0665ee33b50e9e228c46f50f5acbed22"
+                "reference": "8dbd23ef7a8884051482183ddee8d9061b5feed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a3f7189a0665ee33b50e9e228c46f50f5acbed22",
-                "reference": "a3f7189a0665ee33b50e9e228c46f50f5acbed22",
+                "url": "https://api.github.com/repos/symfony/console/zipball/8dbd23ef7a8884051482183ddee8d9061b5feed0",
+                "reference": "8dbd23ef7a8884051482183ddee8d9061b5feed0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11106,7 +11162,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-25T19:27:26+00:00"
+            "time": "2021-10-25T16:36:08+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -11919,7 +11975,10 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mdmsoft/yii2-admin": 20,
-        "warrence/yii2-kartikgii": 20
+        "warrence/yii2-kartikgii": 20,
+        "kartik-v/yii2-widget-datepicker": 20,
+        "kartik-v/yii2-widget-select2": 20,
+        "kartik-v/yii2-widget-datetimepicker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

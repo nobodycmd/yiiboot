@@ -27,6 +27,7 @@ class NotifyService extends Service
      */
     public function createAnnounce($content, $sender_id)
     {
+        return true;
         $model = new Notify();
         $model->content = $content;
         $model->sender_id = $sender_id;
@@ -45,6 +46,7 @@ class NotifyService extends Service
      */
     public function createRemind($target_id, $targetType, $action, $sender_id, $content)
     {
+        return true;
         $model = new Notify();
         $model->target_id = $target_id;
         $model->target_type = $targetType;
@@ -64,6 +66,7 @@ class NotifyService extends Service
      */
     public function createMessage($content, $sender_id, $receiver)
     {
+        return false;
         $model = new Notify();
         $model->content = $content;
         $model->sender_id = $sender_id;
@@ -87,6 +90,7 @@ class NotifyService extends Service
      */
     public function pullAnnounce($member_id, $created_at)
     {
+        return;
         // 从UserNotify中获取最近的一条公告信息的创建时间: lastTime
         $model = NotifyMember::find()
             ->where(['member_id' => $member_id, 'type' => Notify::TYPE_ANNOUNCE])
@@ -120,6 +124,7 @@ class NotifyService extends Service
      */
     public function pullRemind(NotifySubscriptionConfig $subscriptionConfig, $type = SubscriptionAlertTypeEnum::SYS)
     {
+        return [];
         /** @var array $action 查询用户的配置文件SubscriptionConfig */
         $action = $subscriptionConfig->action;
         !is_array($action) && $action = [];
@@ -163,6 +168,7 @@ class NotifyService extends Service
      */
     public function updateSubscriptionConfig($member_id)
     {
+        return true;
         $actions = [];
         $config = NotifySubscriptionConfig::findOne(['member_id' => $member_id]);
         $config->action = Json::encode($actions);
@@ -176,6 +182,7 @@ class NotifyService extends Service
      */
     public function getUserNotify($member_id, $is_read = 0)
     {
+        return [false,$pages = new Pagination(['totalCount' => 0, 'pageSize' => 10])];
         $data = NotifyMember::find()
             ->where(['status' => StatusEnum::ENABLED, 'is_read' => $is_read])
             ->andWhere(['member_id' => $member_id]);

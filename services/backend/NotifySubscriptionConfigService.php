@@ -5,7 +5,7 @@ namespace services\backend;
 use common\components\Service;
 use common\enums\SubscriptionAlertTypeEnum;
 use common\helpers\ArrayHelper;
-use common\models\backend\NotifySubscriptionConfig;
+use common\models\NotifySubscriptionConfig;
 
 /**
  * Class NotifySubscriptionConfigService
@@ -34,6 +34,7 @@ class NotifySubscriptionConfigService extends Service
      */
     public function findByMemberId($member_id)
     {
+        return null;
         return NotifySubscriptionConfig::findOne(['member_id' => $member_id]);
     }
 
@@ -42,6 +43,7 @@ class NotifySubscriptionConfigService extends Service
      */
     public function findAllWithMember()
     {
+        return [];
         return NotifySubscriptionConfig::find()->with('member')->all();
     }
 }

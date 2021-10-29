@@ -7,10 +7,15 @@ use yii\web\AssetBundle;
 /**
  * Class AdminLetAsset
  * @package common\widgets\adminlet
-
  */
 class AdminLetAsset extends AssetBundle
 {
+    public function init()
+    {
+        $this->sourcePath = __DIR__ . '/resources';
+        parent::init();
+    }
+
     public $css = [
         'dist/css/skins/_all-skins.min.css',
         'bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -36,9 +41,4 @@ class AdminLetAsset extends AssetBundle
         HeadJsAsset::class,
     ];
 
-    public function init()
-    {
-        $this->sourcePath = __DIR__ . '/resources';
-        parent::init();
-    }
 }

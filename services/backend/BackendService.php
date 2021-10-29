@@ -9,7 +9,6 @@ use common\components\Service;
 /**
  * Class BackendService
  * @package services\backend
-
  */
 class BackendService extends Service
 {
@@ -37,60 +36,6 @@ class BackendService extends Service
      */
     public function getUserName($model)
     {
-        switch ($model->app_id) {
-            case AppEnum::BACKEND :
-                if (!empty($model->backendMember)) {
-                    $str = [];
-                    $str[] = "ID：" . $model->backendMember->id;
-                    $str[] = "账号：" . $model->backendMember->username;
-                    $str[] = "姓名：" . $model->backendMember->realname;
-
-                    return implode("<br>", $str);
-                }
-
-                return '游客';
-                break;
-            case AppEnum::MERCHANT :
-                if (!empty($model->merchantMember)) {
-                    $str = [];
-                    $str[] = 'ID：' . $model->merchantMember->id;
-                    $str[] = '账号：' . $model->merchantMember->username;
-                    $str[] = '姓名：' . $model->merchantMember->realname;
-
-                    return implode("<br>", $str);
-                }
-
-                return '游客';
-
-                break;
-            case AppEnum::OAUTH2 :
-                if (!empty($model->oauth2Member)) {
-                    $str = [];
-                    $str[] = 'ID：' . $model->oauth2Member->id;
-                    $str[] = '账号：' . $model->oauth2Member->username;
-                    $str[] = '昵称：' . $model->oauth2Member->nickname;
-                    $str[] = '姓名：' . $model->oauth2Member->realname;
-
-                    return implode("<br>", $str);
-                }
-
-                return '游客';
-
-                break;
-            default :
-                if (!empty($model->member)) {
-                    $str = [];
-                    $str[] = 'ID：' . $model->member->id;
-                    $str[] = '账号：' . $model->member->username;
-                    $str[] = '昵称：' . $model->member->nickname;
-                    $str[] = '姓名：' . $model->member->realname;
-
-                    return implode("<br>", $str);
-                }
-
-                return '游客';
-
-                break;
-        }
+        return json_encode($model);
     }
 }

@@ -37,6 +37,12 @@ class Application extends Service
      */
     public $childService = [
 
+        /** ------ 系统 ------ **/
+        'backend' => 'services\backend\BackendService',
+        'backendNotify' => 'services\backend\NotifyService',
+        'backendNotifyPullTime' => 'services\backend\NotifyPullTimeService',
+        'backendNotifySubscriptionConfig' => 'services\backend\NotifySubscriptionConfigService',
+
         /** ------ 公用部分 ------ **/
         'menu' => 'services\common\MenuService',
         'menuCate' => 'services\common\MenuCateService',
@@ -65,5 +71,8 @@ class Application extends Service
         'printerYiLianYun' => 'services\common\PrinterYiLianYunService',
         'printerFeiEYunService' => 'services\common\PrinterFeiEYunService',
 
+
+        /** ------ 商户 ------ **/
+        //'merchant' => 'services\merchant\MerchantService',
     ];
 }

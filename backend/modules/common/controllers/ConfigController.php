@@ -2,6 +2,7 @@
 
 namespace backend\modules\common\controllers;
 
+use common\traits\BaseAction;
 use Yii;
 use yii\web\NotFoundHttpException;
 use common\enums\StatusEnum;
@@ -21,6 +22,7 @@ use backend\controllers\BaseController;
 class ConfigController extends BaseController
 {
     use Curd;
+    use BaseAction;
 
     /**
      * @var Config

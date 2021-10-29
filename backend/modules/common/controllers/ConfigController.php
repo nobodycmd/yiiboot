@@ -67,7 +67,7 @@ class ConfigController extends BaseController
      * @return mixed|string|\yii\web\Response
      * @throws \yii\base\ExitException
      */
-    public function actionAjaxEdit()
+    public function actionEdit()
     {
         $id = Yii::$app->request->get('id');
         $model = $this->findModel($id);
@@ -81,7 +81,7 @@ class ConfigController extends BaseController
                 : $this->message($this->getError($model), $this->redirect(Yii::$app->request->referrer), 'error');
         }
 
-        return $this->renderAjax($this->action->id, [
+        return $this->render($this->action->id, [
             'model' => $model,
             'configTypeList' => ConfigTypeEnum::getMap(),
             'cateDropDownList' => Yii::$app->services->configCate->getDropDown(AppEnum::BACKEND)

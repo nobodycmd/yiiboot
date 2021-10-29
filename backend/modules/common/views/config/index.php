@@ -73,10 +73,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                                 'template' => '{edit} {status} {destroy}',
                                 'buttons' => [
                                     'edit' => function ($url, $model, $key) {
-                                        return Html::edit(['ajax-edit', 'id' => $model->id], '编辑', [
-                                            'data-toggle' => 'modal',
-                                            'data-target' => '#ajaxModal',
-                                        ]);
+                                        return Html::edit(['edit', 'id' => $model->id], '编辑');
                                     },
                                     'status' => function ($url, $model, $key) {
                                         return Html::status($model->status);

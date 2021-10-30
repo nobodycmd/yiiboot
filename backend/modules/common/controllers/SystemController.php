@@ -9,7 +9,6 @@ use backend\controllers\BaseController;
 /**
  * Class SystemController
  * @package backend\modules\base\controllers
-
  */
 class SystemController extends BaseController
 {

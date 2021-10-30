@@ -17,7 +17,7 @@ use backend\controllers\BaseController;
 /**
  * Class ConfigController
  * @package backend\modules\common\controllers
-
+ * @author jianyan74 <751393839@qq.com>
  */
 class ConfigController extends BaseController
 {
@@ -67,7 +67,7 @@ class ConfigController extends BaseController
      * @return mixed|string|\yii\web\Response
      * @throws \yii\base\ExitException
      */
-    public function actionEdit()
+    public function actionAjaxEdit()
     {
         $id = Yii::$app->request->get('id');
         $model = $this->findModel($id);
@@ -81,7 +81,7 @@ class ConfigController extends BaseController
                 : $this->message($this->getError($model), $this->redirect(Yii::$app->request->referrer), 'error');
         }
 
-        return $this->render($this->action->id, [
+        return $this->renderAjax($this->action->id, [
             'model' => $model,
             'configTypeList' => ConfigTypeEnum::getMap(),
             'cateDropDownList' => Yii::$app->services->configCate->getDropDown(AppEnum::BACKEND)

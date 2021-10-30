@@ -2,6 +2,7 @@
 
 namespace backend\modules\common\controllers;
 
+use common\traits\BaseAction;
 use Yii;
 use yii\data\ActiveDataProvider;
 use common\traits\Curd;
@@ -17,6 +18,7 @@ use backend\controllers\BaseController;
 class ConfigCateController extends BaseController
 {
     use Curd;
+    use BaseAction;
 
     /**
      * @var ConfigCate

@@ -2,6 +2,7 @@
 
 namespace backend\modules\common\controllers;
 
+use common\traits\BaseAction;
 use Yii;
 use common\helpers\ResultHelper;
 use common\models\Log;
@@ -17,6 +18,7 @@ use yii\data\Pagination;
  */
 class LogController extends BaseController
 {
+    use BaseAction;
     /**
      * @return string
      * @throws \yii\web\NotFoundHttpException

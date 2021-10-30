@@ -17,8 +17,4 @@ class HeadJsAsset extends AssetBundle
         'plugins/toastr/toastr.min.js',
         'plugins/cropper/cropper.min.js',
     ];
-
-    public $jsOptions = [
-        //'position' => \yii\web\View::POS_HEAD
-    ];
 }

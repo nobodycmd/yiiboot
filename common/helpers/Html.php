@@ -261,7 +261,7 @@ class Html extends BaseHtml
      */
     public static function modelBaseCss()
     {
-        echo Html::cssFile(Yii::getAlias('@web') . '/resources/css/rageframe.css?v=' . time());
+        //echo Html::cssFile(Yii::getAlias('@web') . '/resources/css/rageframe.css?v=' . time());
 
         Yii::$app->controller->view->registerCss(<<<Css
 .modal {

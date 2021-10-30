@@ -129,6 +129,7 @@ $config = [
 
 ];
 
+
 if (!YII_ENV_TEST) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
@@ -136,30 +137,25 @@ if (!YII_ENV_TEST) {
         'class' => 'yii\debug\Module',
     ];
 
-
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'generators' => [ // here
+        'generators' => [
             'crud' => [
-                'class' => 'warrence\kartikgii\crud\Generator',
-                'templates' => [ // setting for our templates
-                    'myself' => '@backend/gii-templates/myself/crud/default',
+                'class' => \common\components\gii\crud\Generator::class,
+                'templates' => [
+                    'default' => '@common/components/gii/crud/default',
+                    'yii2' => '@vendor/yiisoft/yii2-gii/src/generators/crud/default',
                 ]
             ],
-//            'crud' => [
-//                'class' => 'warrence\kartikgii\crud\Generator',
-//                'templates' => [ // setting for our templates
-//                    'kartikgii' => '@backend/gii-templates/yii2-kartikgii/crud/default',
-//                ]
-//            ],
-//            'crud' => [ // generator name
-//                'class' => 'yii\gii\generators\crud\Generator', // generator class
-//                'templates' => [ // setting for our templates
-//                    'customize' => '@backend/gii-templates/adminlte2',
-//                ]
-//            ],
-        ]
+            'model' => [
+                'class' => \yii\gii\generators\model\Generator::class,
+                'templates' => [
+                    'default' => '@common/components/gii/model/default',
+                    'yii2' => '@vendor/yiisoft/yii2-gii/src/generators/model/default',
+                ]
+            ],
+        ],
     ];
 }
 

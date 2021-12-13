@@ -37,7 +37,7 @@ $items = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$
         </div>
 
         <?php
-        echo \dmstr\widgets\Menu::widget([
+        echo dmstr\widgets\Menu::widget([
                 'options' => [
                     'class' => 'sidebar-menu tree',
                     'data-widget' => 'tree',

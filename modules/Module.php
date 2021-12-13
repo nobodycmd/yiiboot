@@ -43,6 +43,8 @@ abstract class Module extends \yii\base\Module
         //config.php 配置文件 类似 应用主体配置。
 
         \Yii::configure($this, ArrayHelper::merge($c1,$c2));
+
+        $this->basePath = \Yii::getAlias('@modules/'.$moduleName);
     }
 
 }

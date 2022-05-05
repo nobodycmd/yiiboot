@@ -1,7 +1,6 @@
 <?php
 namespace common\behaviors;
 
-use service\SnowFlakeIDService;
 use Yii;
 use yii\base\Behavior;
 use yii\base\Event;
@@ -33,7 +32,7 @@ class SnowFlakeIDBehavior extends Behavior
     public function beforeInsert($event)
     {
         $primaryKey = $event->sender->primaryKey();
-        $event->sender->$primaryKey = (new SnowFlakeIDService())->nextId();
+        $event->sender->$primaryKey = (new \services\common\SnowFlakeIDService())->nextId();
     }
 
 }
